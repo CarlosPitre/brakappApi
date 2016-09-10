@@ -1,0 +1,41 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h2 class="title">Formulario de Inscripción</h2>
+    <div class="buttons">
+        <button class="button button-clear  button-small button-assertive" ng-click="closeModalLogin()"> <i class="icon ion-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+  </ion-content>
+  <ion-tabs class="tabs-balanced tabs-icon-top">
+
+    <ion-tab title="Login" icon-on="ion-ios-person" icon-off="ion-ios-person-outline">
+      <br><br><br>
+      <h1><i class="icon ion-android-person"></i></h1>
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">Correo</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Contraseña</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-balanced" ng-click = "iniciarSesion()" >Iniciar Sesión</button>
+          <button class="button button-block button-positive" ><i class="icon ion-social-facebook"></i> &nbsp Iniciar Sesión Con Facebook</button>
+        </label>
+      </div>
+    </ion-tab>
+
+    <ion-tab title="Registrarse" icon-on="ion-ios-personadd" icon-off="ion-ios-personadd-outline">
+      <!-- Tab 2 content -->
+    </ion-tab>
+
+    <ion-tab title="Olvido Contraseña?" icon-on="ion-ios-gear" icon-off="ion-ios-gear-outline">
+      <!-- Tab 3 content -->
+    </ion-tab>
+
+  </ion-tabs>
+</ion-modal-view>

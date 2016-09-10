@@ -1,0 +1,77 @@
+<div class="">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 class="tittle-page"><span>Solicitudes</span></h2>
+        </div>
+    </div>
+  <div class="row">
+      <div class="row">
+          <div class="col-xs-12">
+              <div class="ctnm">
+                  <div class="append-icon">
+
+                      <input type="text" name="firstname" id="finder" class="form-control form-white input-sm col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
+                      <i class="icon-magnifier icnsearchs" ></i>
+
+                  </div>
+              </div>
+              <div class="ctnm">
+
+              </div>
+
+
+          </div>
+          <div class="col-xs-2">
+
+          </div>
+          <div class="col-md-2" >
+
+          </div>
+      </div>
+      <br>
+<div class="row">
+            <div class="col-lg-12 portlets">
+              <div class="panel">
+                <div  class="panel-header panel-controls">
+                  
+                </div>
+                <div class="panel-content">
+                  <div class="filter-left">
+                    <table  class="table table-bordered ">
+                      <thead>
+                        <tr style="color:white;">
+                          <th>#</th>
+                          <th>Fecha</th>
+                           <th>Cliente</th>
+                           <th>Servicio</th>
+                          <th >Producto</th>
+                          <th style="width:220px" >Respuesta</th>
+                          <th >Opciones</th>                       
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="sol in Solicitudes | filter:filter ">
+                          <td>{{sol.id}}</td>
+                          <td>{{sol.fecha}} </td>
+                          <td>{{sol.cliente}}</td>
+                          <td>{{sol.servicio}}</td>
+                          <td>{{sol.producto}} </td>
+                          <td>          
+                          <select  class="form-control form-white" data-style="green" data-placeholder="Select a Response..." ng-model = "Solicitudes.idRespuesta" >
+                            <option ng-repeat=" res in Respuestas "  value="{{res.id}}">{{res.nombre}}</option>
+                           </select>         
+                           </td>
+                          <td>
+                              <button   type="button"  href="javascript:;" ng-click="update(sol)" class="btn btn-sm btn-blue buttonsp"><i class="fa fa-check"> &nbsp Enviar</i></button>
+                      
+                          
+                              <button   type="button"  href="javascript:;" ng-click="delete(sol)"  class="btn btn-sm btn-blue buttonsp"><i class="fa fa-close"> &nbsp Eliminar</i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>

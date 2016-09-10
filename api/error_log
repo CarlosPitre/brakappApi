@@ -1,0 +1,1 @@
+[26-Aug-2016 14:25:27 America/Bogota] PHP Fatal error:  Call to undefined method Model_profesional::getProfesionalesByProfesional() in /home/brakappc/public_html/api/application/controllers/Profesionales.php on line 58

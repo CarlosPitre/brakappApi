@@ -1,0 +1,208 @@
+  <div class="row">
+     <!-- <div class="col-lg-12">
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="imageprofile" ></div>
+              </div>
+          </div>
+      </div>-->
+            <div class="col-lg-12">
+              <div class="row">
+                <div class="col-md-6 portlets">
+                  <div class="panel">
+                    <div class="panel-header panel-header ">
+                      <div > <h4 style="color:white;" class="modal-title">DATOS PERSONALES</h4> </div>
+                    </div>
+                    <div class="panel-content" style="height: 343px;">
+                      <ul class="nav nav-tabs">
+                        <li class="active"  ><a href="#tab1_1" data-toggle="tab" class="usrprofile"  >
+                            <i class="fa fa-user" aria-hidden="true"></i> Perfil
+                        </a></li>
+                      </ul>
+                      <div class="tab-content">
+                        <div class="tab-pane fade active in" id="tab1_1">
+                          <div  class="row column-seperation">
+                            <div  class="col-md-5 line-separator">
+                                <strong>Foto de perfil:</strong><br>
+                               <img src="../img/images.png" alt="" style="width:150px;height:180px;margin-right:20px; background-repeat:no-repeat;">
+
+                            </div>
+                            <div class="col-md-7 ">
+                              <div class="col-sm-12">
+                                <strong class="indt" >Nombre:</strong>   {{Profesional.razonSocial}}
+
+
+                              </div>
+                            <div class="col-sm-12 ">
+                               <strong class="indt" > Identificación:</strong>  {{Profesional.identificacion}}
+                                <br>
+                            </div>
+                            <div class="col-sm-12">
+                             <strong class="indt">E-Mail:</strong>  {{Profesional.correo}}
+                                <br>
+                            </div>
+                            
+                            <div class="col-sm-12">
+                                <strong class="indt">Telefono:</strong>  {{Profesional.telefono}}
+                                </div>
+                            
+                           <div class="col-sm-12">
+                                <strong class="indt">Expecialidad:</strong>  {{Profesional.experiencia}}
+                            </div>
+                            <div class="col-sm-12">
+                                <button type="button"  style="background:#fb135c; color:white;margin-top:10px; border-radius:5px !important;"  class="btn btn-white btn-block " data-toggle="modal"  data-target="#modal-responsive"><i class="fa fa-edit faa-vertical animated"></i>Editar</button>
+                            </div>
+                            </div>
+                          </div>
+
+                          <div class="row">
+                              <div class="col-md-6 col-md-push-6" >
+
+
+                              </div>
+                          </div>
+                        </div>
+      
+                      </div>
+                    </div>
+                      <div class="panel-footer">
+                      </div>
+                  </div>
+                </div>
+                <div id="map" style=" position: relative;float: left; width: 500px;height: 400px"></div>
+          </div>
+            </div></div>
+
+
+
+
+
+
+
+
+
+      
+    <!-- END PRELOADER -->
+    <a href="#" class="scrollup"><i class="fa fa-angle-up"></i></a> 
+    <script src="../assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+    <script src="../assets/global/plugins/jquery/jquery-migrate-1.2.1.min.js"></script>
+    <script src="../assets/global/plugins/jquery-ui/jquery-ui-1.11.2.min.js"></script>
+    <script src="../assets/global/plugins/gsap/main-gsap.min.js"></script>
+    <script src="../assets/global/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../assets/global/plugins/jquery-cookies/jquery.cookies.min.js"></script> <!-- Jquery Cookies, for theme -->
+    <script src="../assets/global/plugins/jquery-block-ui/jquery.blockUI.min.js"></script> <!-- simulate synchronous behavior when using AJAX -->
+    <script src="../assets/global/plugins/bootbox/bootbox.min.js"></script> <!-- Modal with Validation -->
+    <script src="../assets/global/plugins/mcustom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script> <!-- Custom Scrollbar sidebar -->
+    <script src="../assets/global/plugins/bootstrap-dropdown/bootstrap-hover-dropdown.min.js"></script> <!-- Show Dropdown on Mouseover -->
+    <script src="../assets/global/plugins/charts-sparkline/sparkline.min.js"></script> <!-- Charts Sparkline -->
+    
+    <script src="../assets/global/plugins/select2/select2.min.js"></script> <!-- Select Inputs -->
+    <script src="../assets/global/plugins/icheck/icheck.min.js"></script> <!-- Checkbox & Radio Inputs -->
+    <script src="../assets/global/plugins/backstretch/backstretch.min.js"></script> <!-- Background Image -->
+    <script src="../assets/global/plugins/bootstrap-progressbar/bootstrap-progressbar.min.js"></script> <!-- Animated Progress Bar -->
+    <script src="../assets/global/plugins/charts-chartjs/Chart.min.js"></script>
+
+     <!-- Theme Builder -->
+    <script src="../assets/global/js/sidebar_hover.js"></script> <!-- Sidebar on Hover -->
+    <script src="../assets/global/js/application.js"></script> <!-- Main Application Script -->
+    <script src="../assets/global/js/plugins.js"></script> <!-- Main Plugin Initialization Script -->
+    <script src="../assets/global/js/widgets/notes.js"></script> <!-- Notes Widget -->
+    <script src="../assets/global/js/quickview.js"></script> <!-- Chat Script -->
+    <script src="../assets/global/js/pages/search.js"></script> <!-- Search Script -->
+    <script src="../assets/admin/layout3/js/layout.js"></script>
+  </body>
+</html>
+<div class="modal fade" id="modal-responsive" aria-hidden="true" >
+        <div class="modal-dialog ">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+              <div > <h4 class="modal-title">DATOS PERSONALES</h4> </div>
+              </div>
+
+
+
+                    <div class="modal-body">
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="field-1" class="control-label">Razon Social</label>
+                            <input type="text" class="form-control form-white" id="field-1 " ng-model="Profesional.razonSocial">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                               <label for="field-1" class="control-label">Identificación</label>
+                            <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.identificacion">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                               <label for="field-1" class="control-label">Correo</label>
+                            <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.correo" >
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                               <label for="field-1" class="control-label">Telefono</label>
+                            <input type="text" class="form-control form-white " id="field-1" ng-model="Profesional.telefono">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                           <label for="field-1" class="control-label">Experiencia</label>
+                            <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.experiencia">
+                            </div>
+                            </div>
+
+                            <div class=" col-md-6">
+                              <div class="form-group">
+                          <label for="field-1" class="control-label">Seleccionar Imagen</label>
+                          
+                          <div class="fileinput fileinput-new input-group" data-provides="fileinput">
+                            <div class="form-control" data-trigger="fileinput">
+                              <i class="glyphicon glyphicon-file fileinput-exists"></i><span class="fileinput-filename"></span>
+                            </div>
+                            <span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Choose...</span><span class="fileinput-exists">Change</span>
+                            <input type="file" name="...">
+                            </span>
+                            <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+                          </div>
+                        </div>
+                               
+                               </div>
+
+                            
+                         
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <button    type="button" class="btn btn-primary btn-embossed bnt-square buttonsp" ng-click="update()"><i class="fa fa-check"></i> Modificar</button>
+                            </div>
+                        </div>
+
+
+                    </div>
+              <div class="modal-footer"></div>
+                </div>
+
+
+
+<script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="../assets/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
+<!--<script src="../assets/global/js/pages/table_dynamic.js"></script>
+
+<script src="../js/ui-bootstrap.js"></script>
+
+<script src="js/builder.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/plugins.js"></script> 
+    <script src="js/quickview.js"></script>-->
+
+
+

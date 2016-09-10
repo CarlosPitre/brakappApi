@@ -1,0 +1,17 @@
+<ion-view view-title="Mis Solicitudes">
+  <ion-content>
+    <div class="list">
+      <a class="item item-thumbnail-left" href="#" ng-repeat = "solicitud in Solicitudes">
+        <img src="{{solicitud.foto}}">
+        <h2>{{solicitud.profesional}}</h2>
+        <p>{{solicitud.servicio}}</p>
+        <p>
+          {{solicitud.producto}}
+        </p>
+        <p>
+          <strong>Respuesta: </strong> {{solicitud.respuesta}}
+        </p>
+      </a>
+    </div>
+  </ion-content>
+</ion-view>

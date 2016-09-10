@@ -1,0 +1,139 @@
+<div class="">
+  <div class="row">
+      <div class="col-md-12">
+          <h2 class="tittle-page"><span>Productos</span></h2>
+      </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="ctnm">
+          <div class="append-icon">
+
+              <input type="text" name="firstname" id="finder" class="form-control form-white input-sm col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
+              <i class="icon-magnifier icnsearch" ></i>
+              <button  type="button" class="btn btn-sm btn-blue buttonsp btnnew"  style="padding: 7px !important;" ng-click="nuevo()"> Nuevo</button>
+          </div>
+      </div>
+      <div class="ctnm">
+
+      </div>
+
+
+    </div>
+      <div class="col-xs-2">
+
+      </div>
+    <div class="col-md-2" >
+
+    </div>
+  </div>
+  <br>
+
+   <div class="row">
+            <div class="col-lg-12 portlets">
+              <div class="panel">
+                <div  class="panel-header panel-controls">
+
+                </div>
+                <div class="panel-content">
+                  <div class="filter-left">
+                    <table  class="table table-bordered ">
+                      <thead>
+                        <tr style="color:white;">
+                          <th>#</th>
+                          <th>Descripción</th>
+                           <th>Marca</th>
+                           <th>Porcentaje Descuento</th>
+                          <th >Estatus</th>
+                          <th>estado</th>
+                          <th >Opciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="pro in Productos | filter:filter ">
+                          <td>{{pro.id}}</td>
+                          <td>{{pro.descripcion}} </td>
+                          <td>{{pro.marca}}</td>
+                         <td><div class="t-center"> {{pro.porcentaje}} % </div></td>
+                          <td>{{pro.estatus}}</td>
+                          <td>{{pro.estado}} </td>
+                          <td>
+                              <button   type="button"  href="javascript:;" ng-click="delete(pro)"  class="btn btn-sm btn-blue buttonsp"><i class="fa fa-close"> &nbsp Eliminar</i></button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+  <div class="modal fade" id="modal-responsive" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+          <div > <h4 style="color:white;" class="modal-title">GESTIÓN DE PRODUCTOS</h4> </div>
+        </div>
+        <div class="modal-body">
+
+          <div class="row">
+            <div class="col-md-12">
+
+              <div class="form-group">
+
+                    <label  class="control-label">Descripción</label>
+                    <input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Jean,Computadores,Zapatos..." ng-model="Productos.descripcion">
+                  </div>
+                  <div class="form-group">
+
+                    <label  class="control-label">Marca</label>
+                    <input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Diesel,Acer,Nike..." ng-model="Productos.marca">
+                  </div>
+
+                  <div class="form-group">
+
+                    <label  class="control-label">Porcentaje de Descuento</label>
+                    <input type="text" class="form-control form-white" id="field-1" placeholder="Ej: 60, 0, 50" ng-model="Productos.porcentaje">
+                  </div>
+
+                  <div class="form-group">
+                    <label  class="control-label">Imagenes del Producto</label>
+                    <input  type='file' name='files[]' id ="file"  class="form-control form-white" multiple>
+                  </div>
+
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
+                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp"  ng-show="openButton" data-dismiss="modal"><i class="fa fa-close" ></i> Cerrar</button>
+                </div>
+            </div>
+            <div>
+
+           </div>
+        </div>
+        <div class="modal-footer text-center">
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
+
+<script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="../assets/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
+<script src="../assets/global/js/pages/table_dynamic.js"></script>
+
+
+
+
+<script src="js/builder.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/plugins.js"></script>
+    <script src="js/quickview.js"></script>

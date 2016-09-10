@@ -1,0 +1,53 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h2 class="title">Formulario de Solicitud</h2>
+    <div class="buttons">
+        <button class="button button-clear  button-small button-assertive" ng-click="closeModalSolicitud()"> <i class="icon ion-close"></i></button>
+    </div>
+  </ion-header-bar>
+  <ion-content>
+
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">Nombres</span>
+        <input type="text" ng-model="Cliente.nombres">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Apellidos</span>
+        <input type="text" ng-model="Cliente.apellidos">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Correo</span>
+        <input type="text" ng-model="Cliente.correo">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Teléfono</span>
+        <input type="text" ng-model="Cliente.telefono">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">Dirección</span>
+        <input type="text" ng-model="Cliente.direccion">
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Servicios:
+        </div>
+        <select ng-model = "Solicitud.idServicio" ng-disabled = "disabledServicio" >
+          <option ng-repeat="servicio in Profesional.servicios"  value="{{servicio.id}}">{{servicio.descripcion}}</option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Productos:
+        </div>
+        <select ng-model = "Solicitud.idProducto" ng-disabled = "disabledProducto" >
+          <option ng-repeat="servicio in Profesional.productos"  value="{{servicio.id}}">{{servicio.descripcion}}</option>
+        </select>
+      </label>
+
+      <label class="item">
+        <button class="button button-block button-balanced" ng-click = "save()" >Confirmar Solicitud</button>
+      </label>
+    </div>
+  </ion-content>
+</ion-modal-view>

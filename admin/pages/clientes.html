@@ -1,0 +1,75 @@
+<div class="">
+
+<div class="row">
+    <div class="col-md-8">
+      <div class="append-icon">
+            <input type="text" name="firstname" id="finder" class="form-control form-white input-sm" placeholder="Search..." autofocus ng-model="filter">
+            <i class="icon-magnifier"></i>
+          </div>
+    </div>
+</div>
+
+<div class="row">
+<div class="col-md-8"></div>
+</div>
+
+<br>
+</br>
+
+<div class="row">
+            <div class="col-lg-12 portlets">
+              <div class="panel">
+                <div class="panel-header panel-controls">
+                  
+                </div>
+                <div class="panel-content">
+                  <div class="filter-left">
+                    <table class="table table-bordered ">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Nombre</th>
+                          <th >Apellido</th>
+                          <th >Correo</th>
+                          <th >Telefono</th>
+                          <th >Direccion</th> 
+                          <th >Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="cli in Clientes | filter:filter">
+                        	<td>{{cli.id}}</td>
+                        	<td>{{cli.nombres}} </td>
+                        	<td>{{cli.apellidos}} </td>
+                        	<td>{{cli.correo}} </td>
+                        	<td>{{cli.telefono}} </td>
+                        	<td>{{cli.direccion}} </td>
+                        	<td>{{cli.estado}} </td>
+                        	<!--<td>
+                        		<a href="javascript:;" ng-click="modificar(servicio)" data-toggle="modal" data-target="#modal-responsive">Modficiar</a>
+                        		<a href="javascript:;" ng-click="delete(servicio.id)">Eliminar</a>
+                        	</td>-->
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="../assets/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
+<script src="../assets/global/js/pages/table_dynamic.js"></script>
+
+
+
+<script src="js/builder.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/plugins.js"></script> 
+    <script src="js/quickview.js"></script>
+
+    
