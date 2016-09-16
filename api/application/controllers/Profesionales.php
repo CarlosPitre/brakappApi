@@ -15,6 +15,8 @@ class Profesionales extends REST_Controller {
 	{
 		if ($id != null) {
 			$profesional = $this->model_profesional->getprofesional($id);
+		}else {
+			$profesional = $this->model_profesional->getprofesional();
 		}
 		if ($profesional) {
 			$this->response($profesional, REST_Controller::HTTP_OK);
@@ -23,6 +25,37 @@ class Profesionales extends REST_Controller {
        			'status' => FALSE,
         		'message' => 'No users were found'
             ], REST_Controller::HTTP_NOT_FOUND);
+		};
+	}
+
+
+
+	public function profesionales_post()
+	{
+		$datos = array(
+			"razonSocial" => $this->post("razonSocial"),
+			"identificacion" => $this->post("identificacion"),
+			"correo" => $this->post("correo"),
+			"telefono" => $this->post("telefono"),
+			"idMunicipio" => $this->post("idMunicipio"),
+			"estado" => "INACTIVO",
+ 
+		);
+		$idProfesional = $this->model_profesional->save($datos);
+
+		$datosUsuario = array(
+			"usuario" =>$this->post("usuario"),
+			"password" =>sha1($this->post("password")),
+			"idPerfil" => "3",
+			"idProfesional" => $idProfesional
+		);
+		$guardar = $this->model_profesional->saveUsuario($datosUsuario);
+		if ($guardar) {
+			$message = "Datos Guardados Correctamente";
+			$this->response($message, REST_Controller::HTTP_CREATED);
+		}else{
+			$message = "Error";
+			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
 		};
 	}
 
@@ -207,7 +240,7 @@ class Profesionales extends REST_Controller {
 
 
 
-		public function profesionales_put()
+	public function profesionales_put()
 	{
 		$datos = array(
 			"razonSocial" => $this->put("razonSocial"),
@@ -224,6 +257,37 @@ class Profesionales extends REST_Controller {
 			$message = "Error";
 			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
 		};
+	}
+
+	public function pagos_post()
+	{
+		$valor = $this->post("valorPago");
+		$id = $this->post("id");
+		$queryValores = $this->db->select('*')->from('valores')->where('id','1')->get();
+		$valores = $queryValores->row();
+		$queryProfesional = $this->db->select('diasRestantes')->from('profesional')->where('id',$id)->get();
+		$profesional = $queryProfesional->row();
+		$valormes = $valores->valor;
+		$dias = $valores->dias;
+		$diasMes = ($valor/$valormes)*$dias;
+		$diasRestantes = $profesional->diasRestantes + $diasMes;
+		
+		$datosProfesional = array('diasRestantes' => $diasRestantes, 'estado' => 'Activo');
+		$updateProfesional = $this->model_profesional->update($datosProfesional,$this->post("id"));
+		if ($updateProfesional) {
+
+			$message = "Datos Guardados Correctamente";
+			$this->response([
+					'msg' => $message,
+					'status' => 0
+				], REST_Controller::HTTP_CREATED);
+		}else{
+			$message = "Error";
+			$this->response([
+					'msg' => $message,
+					'status' => 0
+				], REST_Controller::HTTP_BAD_REQUEST);
+		}
 	}
 
 

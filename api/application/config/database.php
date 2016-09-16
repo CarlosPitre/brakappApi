@@ -8,9 +8,9 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
-	'username' => 'brakappc_admin',
-	'password' => 'b2EP78K#HCx=',
-	'database' => 'brakappc_brakapp',
+	'username' => 'root',
+	'password' => '',
+	'database' => 'brackapp',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
