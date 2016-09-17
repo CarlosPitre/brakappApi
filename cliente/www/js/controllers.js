@@ -34,7 +34,6 @@ angular.module('starter.controllers', [])
 		var promiseGet = menuService.getJSON();
         promiseGet.then(function (pl) {
             $scope.Servicio = pl.data;
-            console.log(JSON.stringify($scope.Servicio));
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos', errorPl);
@@ -107,8 +106,8 @@ angular.module('starter.controllers', [])
   }
 
   $scope.Detalles = function (profesional) {
-    console.log(localStorage.getItem('idCliente'));
-    if (localStorage.getItem('idCliente') == null) {
+    console.log(localStorage.getItem('idCliente_br'));
+    if (localStorage.getItem('idCliente_br') == null) {
       $scope.modalLogin.show();
     }else{
       $scope.ImagenesProductos = profesional.imagenesProductos;
@@ -234,9 +233,9 @@ angular.module('starter.controllers', [])
     promiseGet.then(function (pl) {
     	var status = pl.data.status;
     	if (status == 1) {
-    		localStorage.setItem("idCliente",pl.data.usuario.idCliente);
-    		localStorage.setItem("idPerfil",pl.data.usuario.idPerfil);
-    		localStorage.setItem("idUsuario",pl.data.usuario.id);
+    		localStorage.setItem("idCliente_br",pl.data.usuario.idCliente);
+    		localStorage.setItem("idPerfil_br",pl.data.usuario.idPerfil);
+    		localStorage.setItem("idUsuario_br",pl.data.usuario.id);
         $scope.modalLogin.hide();
     	}else{
         var alertPopup = $ionicPopup.alert({
@@ -346,9 +345,10 @@ angular.module('starter.controllers', [])
   loadSolicitudes()
 
   function loadSolicitudes() {
-    var promiseGet = solicitudService.getSolicitudes(localStorage.getItem('idCliente'));
+    var promiseGet = solicitudService.getSolicitudes(localStorage.getItem('idCliente_br'));
     promiseGet.then(function (pl) {
       $scope.Solicitudes = pl.data;
+      console.log(JSON.stringify($scope.Solicitudes));
     },
     function (errorPl) {
     	console.log('Error Al Cargar Datos', errorPl);

@@ -1,12 +1,23 @@
 <ion-view view-title="Search">
   <ion-content>
+    <br>
+    <center>
+        <img src="img/brakapp.png" alt="" style="height:200px;" />
+    </center>
     <div class="col-80 col-offset-10">
       <div class="list list-inset">
            <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Plomeria, Mantenimiento, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control-buscar" matchclass="highlight" />
-      </div>
-      <button class="button button-block button-balanced ion-search" ng-click = "Buscar(selectedServicio.originalObject)">
-        Buscar
-      </button>
+      </div>      
     </div>
+    <center>
+      <button class="button button-balanced ion-search" ng-click = "Buscar(selectedServicio.originalObject)" style="width:300px;">
+        Buscar 
+      </button>
+    </center>
+
+
   </ion-content>
+  <div class="bar bar-footer bar-balanced">
+    <div class="title"></div>
+  </div>
 </ion-view>
