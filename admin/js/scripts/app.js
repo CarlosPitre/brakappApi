@@ -24,14 +24,11 @@ var app;
                     controller : 'empresaCtrl'
                 }
             )
-<<<<<<< HEAD
             .when("/admin/respuestas",{
                     templateUrl: 'pages/respuestas.html',
                     controller : 'respuestaCtrl'
                 }
             )
-=======
->>>>>>> origin/master
             .otherwise({
                 redirectTo:"/inicio"
             });
