@@ -32,11 +32,19 @@ $route['app/json']  = 'servicios/getJson';
 $route['app/usuario/login'] = 'usuario/login';
 $route['app/profesionales/(:num)'] = 'profesionales/profesionales/$1';
 $route['app/profesionales'] = 'profesionales/profesionales';
+$route['app/profesionales/pago'] = 'profesionales/pagos';
 $route['app/servicio/profesionales/visitados'] = 'profesionales/busquedaGeneralProfesionalesVisitados';
 $route['app/servicio/profesionales/distancia'] = 'profesionales/getProfesionalesBySectorDistancia';
 $route['app/solicitudes'] = 'solicitudes/solicitudes';
 $route['app/solicitudes/(:num)'] = 'solicitudes/solicitudes/$1';
 $route['app/cliente/(:num)/solicitudes'] = 'solicitudes/solicitudesCliente/$1';
 $route['app/solicitudes/delete']  = 'solicitudes/delete';
+$route['app/respuestas/delete']  = 'solicitudes/delete';
 $route['app/respuestas'] = 'solicitudes/respuestas';
 $route['app/respuestas/(:num)'] = 'solicitudes/respuestas/$1';
+$route['app/departamentos']  = 'departamento/departamento';
+$route['app/departamentos/(:num)']  = 'departamento/departamento/$1';
+$route['app/municipios']  = 'municipio/municipio';
+$route['app/municipios/(:num)']  = 'municipio/municipio/$1';
+
+

@@ -1,19 +1,15 @@
 var uri = "../api";
 var app;
 (function  () {
-	app = angular.module("empresasesion", ['ngRoute']);
+	app = angular.module("adminbrackp", ['ngRoute']);
 	app.config(['$routeProvider', '$locationProvider',function AppConfig($routeProvider,$locationProvider) {
 		$routeProvider
 			.when("/inicio",{
-                    templateUrl: '/sesion.html',
+                    templateUrl: '/sesionadmin.html',
                     controller : 'loginCtrl'
             	}				
 			)
-			.when("/inicio",{
-                    templateUrl: '/registrar.html',
-                    controller : 'registrarCtrl'
-            	}				
-			)
+		
 			.otherwise({
                 redirectTo:"/inicio"
             });

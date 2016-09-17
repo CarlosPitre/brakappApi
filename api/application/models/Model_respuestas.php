@@ -24,6 +24,19 @@ class Model_respuestas extends CI_Model {
 		$this->db->insert('respuestas', $datos);
 		return $this->db->insert_id();
 	}
+
+	public function save($datos = array())
+	{
+		$this->db->insert('respuestas', $datos);
+		return true;
+	}
+
+	public function delete($id)
+   {
+   		$this->db->where('id', $id);
+   		$this->db->delete('respuestas');
+   		return true;
+   }
 }
 
 /* End of file model_respuestas.php */

@@ -82,6 +82,8 @@ app.controller('miservicioCtrl',  function($scope,servicioService,pluginsService
 
 	$scope.delete = function  (servicio) {
 		var datos = {
+			idServicio : servicio.id,
+			idProfesional : $scope.idProfesional,
 			idServicio : servicio.id
 		}
 		var promiseGet = servicioService.delete(datos);

@@ -61,6 +61,36 @@ class Solicitudes extends REST_Controller{
   }
 
 
+  public function respuestas_post()
+  {
+    $datos = array(
+      "nombre" => $this->post("nombre")
+    );
+    $guardar= $this->model_respuestas->save($datos);
+    if ($guardar) {
+      $message = "Datos Guardados Correctamente";
+      $this->response($message, REST_Controller::HTTP_CREATED);
+    }else{
+      $message = "Error";
+      $this->response($message, REST_Controller::HTTP_BAD_REQUEST);
+    };
+  }
+
+  public function delet_post()
+  {
+    $id= $this->post("id");
+    $guardar= $this->model_respuestas->delete($id);
+    if ($guardar) {
+      $message = "Datos eliminado Correctamente";
+      $this->response($message, REST_Controller::HTTP_CREATED);
+    }else{
+      $message = "Error";
+      $this->response($message, REST_Controller::HTTP_BAD_REQUEST);
+    };
+  }
+  
+
+
 
   public function solicitudes_put()
   {

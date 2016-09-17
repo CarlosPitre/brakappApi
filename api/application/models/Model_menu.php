@@ -13,7 +13,7 @@ class Model_menu extends CI_Model {
 		$query=$this->db
 				->select("m.*")
 				->from("menu m")
-				->join("menuperfil mp","m.id = mp.idMenu","inner")
+				->join("menuPerfil mp","m.id = mp.idMenu","inner")
 				->join("perfil p","mp.idPerfil = p.id","inner")
 				->where(array("p.id" => $idPerfil))
 				->order_by('m.descripcion', 'asc')

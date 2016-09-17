@@ -24,6 +24,6 @@ class Model_cliente extends CI_Model {
 				->get();
 			return $query->row();
 		}
-
-	}
-}
+    }
+    
+    }

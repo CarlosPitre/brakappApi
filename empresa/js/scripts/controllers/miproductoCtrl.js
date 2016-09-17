@@ -10,6 +10,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 	$scope.openButton = true;
 
 
+
 	$scope.Marcas = [];
 
 	loadMarcas();

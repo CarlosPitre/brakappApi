@@ -6,7 +6,7 @@ class Model_usuario extends CI_Model {
 	public function getLogin($user,$pass)
 	{
 		$query=$this->db
-					->select('usuario.id,usuario.idCliente,usuario.idPerfil,usuario.idProfesional')
+					->select('usuario.id,usuario.idCliente,usuario.idPerfil,usuario.idProfesional,usuario.idAdmin')
 					->from("usuario")
 					->where(array("usuario"=>$user,"password"=>$pass))
 					->get();
