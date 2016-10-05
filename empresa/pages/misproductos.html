@@ -54,7 +54,7 @@
                           <td>{{pro.id}}</td>
                           <td>{{pro.descripcion}} </td>
                           <td>{{pro.marca}}</td>
-                         <td><div class="t-center"> {{pro.porcentaje}} % </div></td>
+                          <td><div class="t-center"> {{pro.porcentaje}} % </div></td>
                           <td>{{pro.estatus}}</td>
                           <td>{{pro.estado}} </td>
                           <td>
@@ -81,21 +81,20 @@
           <div class="row">
             <div class="col-md-12">
 
-              <div class="form-group">
-
-                    <label  class="control-label">Descripción</label>
-                    <input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Jean,Computadores,Zapatos..." ng-model="Productos.descripcion">
+                  <div class="form-group">
+                    <label  class="control-label">Producto</label>
+                    <angucomplete id="descripcion" name = "descripcion" placeholder="Descripción del Producto" pause="300"  localdata="Productos" selectedobject="Producto.jsonProducto" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control form-white" matchclass="highlight"/>
                   </div>
                   <div class="form-group">
 
                     <label  class="control-label">Marca</label>
-                    <input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Diesel,Acer,Nike..." ng-model="Productos.marca">
+                    <angucomplete ng-model="Producto.marca"  id="marca" placeholder="Descripción del Producto" pause="300"  localdata="Marcas" selectedobject="Producto.jsonMarca" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control form-white" matchclass="highlight"/>
                   </div>
 
                   <div class="form-group">
 
                     <label  class="control-label">Porcentaje de Descuento</label>
-                    <input type="text" class="form-control form-white" id="field-1" placeholder="Ej: 60, 0, 50" ng-model="Productos.porcentaje">
+                    <input type="text" class="form-control form-white" id="field-1" placeholder="Ej: 60, 0, 50" ng-model="Producto.porcentaje">
                   </div>
 
                   <div class="form-group">
@@ -124,16 +123,3 @@
 
 </div>
 
-
-
-<script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
-<script src="../assets/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
-<script src="../assets/global/js/pages/table_dynamic.js"></script>
-
-
-
-
-<script src="js/builder.js"></script>
-    <script src="js/application.js"></script>
-    <script src="js/plugins.js"></script>
-    <script src="js/quickview.js"></script>

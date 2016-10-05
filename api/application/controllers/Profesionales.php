@@ -38,6 +38,7 @@ class Profesionales extends REST_Controller {
 			"correo" => $this->post("correo"),
 			"telefono" => $this->post("telefono"),
 			"idMunicipio" => $this->post("idMunicipio"),
+			"foto" => "../img/images.png",
 			"estado" => "INACTIVO",
  
 		);
@@ -94,7 +95,7 @@ class Profesionales extends REST_Controller {
 				$id = $this->post("idProducto");
 				$profesionales = $this->model_profesional->getProfesionalesByProducto($id);
 				for ($i=0; $i < count($profesionales); $i++) {
-					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idProfesionalProducto);
+					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idprofesionalproducto);
 				}
 				break;
 			default:
@@ -242,12 +243,26 @@ class Profesionales extends REST_Controller {
 
 	public function profesionales_put()
 	{
+
+		$imagen = $this->put("foto");
+		$arrayImagen = explode("../api/img/", $imagen);
+		
+		if ($arrayImagen[0] == null) {
+			$imagen = $arrayImagen[1];
+		}else{
+			$imagen = $arrayImagen[0];
+		}		
+
 		$datos = array(
 			"razonSocial" => $this->put("razonSocial"),
 			"identificacion"=>$this->put("identificacion"),
 			"correo"=>$this->put("correo"),
 			"telefono"=>$this->put("telefono"),
-			"experiencia"=>$this->put("experiencia")
+			"experiencia"=>$this->put("experiencia"),
+			"direccion" => $this->put("direccion"),
+			"latitud" => $this->put("latitud"),
+			"longitud" => $this->put("longitud"),
+			"foto" => "../api/img/".$imagen
 		);
 		$guardar= $this->model_profesional->update($datos,$this->put("id"));
 		if ($guardar) {

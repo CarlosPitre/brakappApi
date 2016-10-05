@@ -1623,7 +1623,7 @@ INSERT INTO `servicio` (`id`, `descripcion`, `estado`, `idSector`) VALUES
 
 CREATE TABLE `solicitud` (
   `id` int(11) NOT NULL,
-  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `fecha` datetime NOT NULL ,
   `idCliente` int(11) NOT NULL,
   `idProfesional` int(11) NOT NULL,
   `idProducto` int(11) DEFAULT NULL,

@@ -45,11 +45,28 @@ class Productos extends REST_Controller {
 	        $this->response([
        			'status' => FALSE,
         		'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND);
+            ], REST_Controller::HTTP_OK);
 		};
 	}
 
-
+	public function saveFotosProductos_post()
+	{
+		$fotos = $this->post("fotos");
+		for ($i=0; $i < count($fotos); $i++) { 
+			$datos = array(
+				"imagen" =>	"../api/img/".$fotos[$i]['foto'],
+				"idProfesionalProducto" => $this->post("id")
+			);
+			$guardar= $this->model_productos->guardarFotos($datos);
+		}
+		if ($guardar) {
+			$message = "Datos Guardados Correctamente";
+			$this->response($message, REST_Controller::HTTP_CREATED);
+		}else{
+			$message = "Error";
+			$this->response($message, REST_Controller::HTTP_OK);
+		};
+	}
 
 
 	public function productos_post()
@@ -72,13 +89,14 @@ class Productos extends REST_Controller {
 			"idMarca" => $idMarca,
 			"porcentaje" =>  $this->post("porcentaje")
 		);
-		$guardar = $this->model_productos->saveProfesional($datosProductos);
-         if ($guardar) {
-					 $this->response([
-		 				'status' => TRUE,
-		 				'message' => 'Datos Guardados Correctamente',
-						'idProducto' => $idProducto
-					], REST_Controller::HTTP_OK);
+		$idProfesionalProducto = $this->model_productos->saveProfesional($datosProductos);
+         if ($idProfesionalProducto != null) {
+			$this->response([
+ 				'status' => TRUE,
+ 				'message' => 'Datos Guardados Correctamente',
+				'idProducto' => $idProducto,
+				'idProfesionalProducto' => $idProfesionalProducto
+			], REST_Controller::HTTP_OK);
 		}else{
 			$message = "Error";
 			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);

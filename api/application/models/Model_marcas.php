@@ -13,9 +13,8 @@ class Model_marcas extends CI_Model {
 	{
 		if ($id == null) {
 			$query=$this->db
-				->select('s.descripcion as marca, ps.*')
+				->select('*')
 				->from('marca s')
-				->join('profesionalproducto ps', 'ps.idMarca = s.id', 'inner')
 				->get();
 		}
 		return $query->result();

@@ -18,13 +18,23 @@ class Model_productos extends CI_Model {
 				->join('marca m', 'ps.idMarca = m.id', 'inner')
 				->where('ps.idProfesional', $id)
 				->get();
+				return $query->result();
+		}else{
+			$query=$this->db
+				->select('p.*, m.descripcion as marca')
+				->from('producto p')
+				->join('marca m', 'p.idMarca = m.id', 'inner')
+				->get();
+			return $query->result();
 		}
-		return $query->result();
+		
 	}
 
-
-
-
+	public function guardarFotos($datos = array())
+	{
+		$this->db->insert('imagenesprofesionalproducto', $datos);
+		return true;
+	}
 
 	public function save($datos = array())
 	{
@@ -35,7 +45,7 @@ class Model_productos extends CI_Model {
 	public function saveProfesional($datos = array())
 	{
 		$this->db->insert('profesionalproducto', $datos);
-		return true;
+		return $this->db->insert_id();
 	}
 
    public function delete($idProducto)

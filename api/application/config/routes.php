@@ -17,6 +17,7 @@ $route['app/clientes/(:num)']  = 'clientes/clientes/$1';
 $route['app/sectores']  = 'sectores/sectores';
 $route['app/productos']  = 'productos/productos';
 $route['app/productos/delete']  = 'productos/delete';
+$route['app/productos/imagenes']  = 'productos/saveFotosProductos';
 $route['app/marcas']  = 'productos/marcas';
 $route['app/marcas/(:num)']  = 'productos/marcas/$1';
 $route['app/productos/(:num)']  = 'productos/productos/$1';

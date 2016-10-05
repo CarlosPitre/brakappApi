@@ -5,6 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $active_group = 'default';
 $query_builder = TRUE;
 
+/*
+'username' => 'brakappc_admin',
+	'password' => 'b2EP78K#HCx=',
+	'database' => 'brakappc_brakapp',
+*/
+
 $db['default'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',

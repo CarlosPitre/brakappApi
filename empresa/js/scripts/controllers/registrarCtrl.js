@@ -53,7 +53,11 @@ app.controller('registrarCtrl',  function($scope,registrarService){
 
 		var promiseGet = registrarService.post(datos);
 		promiseGet.then(function (pl) {
-            alert(pl.data.message);
+            console.log(JSON.stringify(pl.data));
+            alert(pl.data);
+            $scope.Profesional = {};
+            $scope.usuario = "";
+            $scope.password = "";
         },
         function (errorPl) {
         	console.log('Error Al Cargar Datos ', errorPl);

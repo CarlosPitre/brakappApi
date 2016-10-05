@@ -4,7 +4,13 @@ app.service('productoService', ['$http', function($http){
 		return req;
 	}
 	this.getProductos = function  (id) {
-		var req = $http.get(uri + '/app/productos/' + id );
+		if (id == null ) {
+			var req = $http.get(uri + '/app/productos');
+		}else{
+			console.log(uri + '/app/productos/' + id);
+			var req = $http.get(uri + '/app/productos/' + id );
+		};
+		
 		return req;
 	}
 
@@ -24,5 +30,10 @@ app.service('productoService', ['$http', function($http){
 	   	console.log(req)
 	   return req;
    };
+
+   this.postImagenes = function  (object) {
+   		var req = $http.post(uri + '/app/productos/imagenes', object);
+		return req;
+   }
 
 }])
