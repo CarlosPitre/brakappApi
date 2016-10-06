@@ -27,7 +27,7 @@ class Solicitudes extends REST_Controller{
           $this->response([
             'status' => FALSE,
             'message' => 'No users were found'
-            ], REST_Controller::HTTP_NOT_FOUND);
+            ], REST_Controller::HTTP_OK);
     };
   }
 

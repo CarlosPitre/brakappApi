@@ -70,11 +70,12 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesBySector($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje')
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje,pf.descripcion as profesion')
 							->from('profesional p')
 							->join('profesionalservicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
 							->join('sectorServicio ss','ss.idServicio = s.id')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('ss.idSector', $id)
 							->order_by('p.calificacion', 'desc')
@@ -84,10 +85,11 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByServicio($idServicio)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje')
+		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje,pf.descripcion as profesion')
 							->from('profesional p')
 							->join('profesionalservicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('s.id', $idServicio)
 							->order_by('p.calificacion', 'desc')
@@ -97,10 +99,11 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByMarca($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje')
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje,pf.descripcion as profesion')
 							->from('profesional p')
 							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
 							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('pp.idMarca', $id)
 							->order_by('p.calificacion', 'desc')
@@ -110,12 +113,41 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByProducto($id)
 	{
-		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto')
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto,pf.descripcion as profesion')
 							->from('profesional p')
 							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
 							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
 							->where('pp.idProducto', $id)
+							->order_by('p.calificacion', 'desc')
+							->get();
+		return $query->result();
+	}
+
+	public function getProfesionalesByProductoMarca($idProducto,$idMarca,$modelo)
+	{
+		$query = $this->db->select('p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto,pf.descripcion as profesion')
+							->from('profesional p')
+							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
+							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('pp.idProducto', $idProducto)
+							->where('pp.idMarca', $idMarca)
+							->like('pp.modelo',$modelo)
+							->order_by('p.calificacion', 'desc')
+							->get();
+		return $query->result();
+	}
+
+	public function getProfesionalesByProfesion($id)
+	{
+		$query = $this->db->select('p.*, m.nombre as municipio,pf.descripcion as profesion')
+							->from('profesional p')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('p.idProfesion', $id)
 							->order_by('p.calificacion', 'desc')
 							->get();
 		return $query->result();
@@ -186,36 +218,35 @@ class Model_profesional extends CI_Model {
 							->having('distancia < 1')
 							->order_by('distancia', 'asc')
 							->get();
-
 		return $query->result();
 	}
 
 	public function getServicios($idProfesional)
 	{
 		$query = $this->db->select('s.*')
-							->from('servicio s')
-							->join('profesionalservicio ps', 'ps.idServicio = s.id','inner')
-							->where('ps.idProfesional', $idProfesional)
-							->get();
+			->from('servicio s')
+			->join('profesionalservicio ps', 'ps.idServicio = s.id','inner')
+			->where('ps.idProfesional', $idProfesional)
+			->get();
 		return $query->result();
 	}
 
 	public function getProductos($idProfesional)
 	{
 		$query = $this->db->select('p.*')
-							->from('producto p')
-							->join('profesionalproducto pp', 'pp.idProducto = p.id','inner')
-							->where('pp.idProfesional', $idProfesional)
-							->get();
+			->from('producto p')
+			->join('profesionalproducto pp', 'pp.idProducto = p.id','inner')
+			->where('pp.idProfesional', $idProfesional)
+			->get();
 		return $query->result();
 	}
 
 	public function getImagenes($idprofesionalproducto)
 	{
 		$query = $this->db->select('imagen')
-											->from('imagenesprofesionalproducto')
-											->where('idprofesionalproducto',$idprofesionalproducto)
-											->get();
+			->from('imagenesprofesionalproducto')
+			->where('idprofesionalproducto',$idprofesionalproducto)
+			->get();
 		return $query->result();
 	}
 

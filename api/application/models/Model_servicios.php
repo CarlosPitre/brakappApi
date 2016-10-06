@@ -101,4 +101,25 @@ class Model_servicios extends CI_Model {
 		return $query->result();
 	}
 
+	public function getProductosMarcas()
+	{
+		$query=$this->db
+				->select("ps.id,CONCAT(p.descripcion, ' ', m.descripcion, ' ', ps.modelo) as descripcion, ps.idProducto as idProducto, ps.idMarca as idMarca, ps.modelo")
+				->from('profesionalproducto ps')
+				->join('producto p', 'ps.idProducto = p.id','inner')
+				->join('marca m', 'ps.idMarca = m.id','inner')
+				->where('ps.estado', 'Activo')
+				->get();
+		return $query->result();
+	}
+
+	public function getProfesiones()
+	{
+		$query=$this->db
+				->select('id, descripcion')
+				->from('profesiones')				
+				->get();
+		return $query->result();
+	}
+
 }

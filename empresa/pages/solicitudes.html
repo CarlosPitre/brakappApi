@@ -43,10 +43,11 @@
                           <th>#</th>
                           <th>Fecha</th>
                            <th>Cliente</th>
+                           <th>Teléfono</th>
                            <th>Servicio</th>
                           <th >Producto</th>
                           <th style="width:220px" >Respuesta</th>
-                          <th >Opciones</th>                       
+                                                 
                         </tr>
                       </thead>
                       <tbody>
@@ -54,6 +55,7 @@
                           <td>{{sol.id}}</td>
                           <td>{{sol.fecha}} </td>
                           <td>{{sol.cliente}}</td>
+                          <td>{{sol.telefono}}</td>
                           <td>{{sol.servicio}}</td>
                           <td>{{sol.producto}} </td>
                           <td>          
@@ -62,9 +64,9 @@
                            </select>         
                            </td>
                           <td>
-                              <button   type="button"  href="javascript:;" ng-click="update(sol)" class="btn btn-sm btn-blue buttonsp"><i class="fa fa-check"> &nbsp Enviar</i></button>
-                      
-                          
+                              <button   type="button"  href="javascript:;" ng-click="update(sol)" class="btn btn-sm btn-blue buttonsp"><i class="fa fa-check"> &nbsp Responder</i></button>
+                          </td>
+                          <td>
                               <button   type="button"  href="javascript:;" ng-click="delete(sol)"  class="btn btn-sm btn-blue buttonsp"><i class="fa fa-close"> &nbsp Eliminar</i></button>
                           </td>
                         </tr>

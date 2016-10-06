@@ -104,6 +104,8 @@ class Servicios extends REST_Controller {
 		$marcas = $this->model_servicios->getMarca();
 		$servicios = $this->model_servicios->getServicio();
 		$productos = $this->model_servicios->getProducto();
+		$productosMarcas = $this->model_servicios->getProductosMarcas();
+		$profesion = $this->model_servicios->getProfesiones();
 
 		$index = 0;
 		for ($i=0; $i < count($sectores); $i++) {
@@ -152,6 +154,27 @@ class Servicios extends REST_Controller {
 				"idProducto" => $productos[$i]->id,
 				"descripcion" => $productos[$i]->descripcion,
 				"tipo" => "Producto"
+			);
+			$index = $index + 1;
+		}
+		for ($i=0; $i < count($productosMarcas); $i++) {
+			$json[] = array(
+				"id" => $index,
+				"idProductoMarca" => $productosMarcas[$i]->id,
+				"descripcion" => $productosMarcas[$i]->descripcion,
+				"tipo" => "ProductoMarca",
+				"idProducto" => $productosMarcas[$i]->idProducto,
+				"idMarca" => $productosMarcas[$i]->idMarca,
+				"modelo" => $productosMarcas[$i]->modelo,
+			);
+			$index = $index + 1;
+		}
+		for ($i=0; $i < count($profesion); $i++) {
+			$json[] = array(
+				"id" => $index,
+				"idProfesion" => $profesion[$i]->id,
+				"descripcion" => $profesion[$i]->descripcion,
+				"tipo" => "Profesion"
 			);
 			$index = $index + 1;
 		}

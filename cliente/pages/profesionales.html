@@ -129,9 +129,7 @@
           <div class="modal-body">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
               <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                <li data-target="#carousel-example-generic" data-slide-to="$index" ng-class="{'active': $index == 0}" ng-repeat="sub in Profesional.imagenesProductos"></li>         
               </ol>
               <div class="carousel-inner" role="listbox">
                 <div class="item " ng-class="{'active': $index == 0}" ng-repeat="imagen in Profesional.imagenesProductos">
@@ -170,7 +168,7 @@
         <div class="modal-body">
           <ul class="nav nav-tabs nav-justified">
             <li class="active"><a data-toggle="tab" href="#login" target="_self" >Iniciar Sesión</a></li>
-            <li><a data-toggle="tab" href="#menu1"  target="_self">Registrarse</a></li>
+            <li><a data-toggle="tab" href="#registrarse"  target="_self">Registrarse</a></li>
             <li><a data-toggle="tab" href="#contraseña" target="_self">Olvide Contraseña?</a></li>
           </ul>
           <center>
@@ -199,7 +197,8 @@
               </div> 
              
             </div>
-            <div id="menu1" class="tab-pane fade">            
+            <!-- Tab Registrarse  -->
+            <div id="registrarse" class="tab-pane fade">            
               <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                   <button type="button" class="btn btn-primary btn-custom btn-serch" style="width: 100%;margin-bottom: 6px" ng-click="iniciarSesion()">Iniciar Sesión</button>
@@ -209,6 +208,98 @@
             </div>
           </div>
           
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="modal fade" id="modalSolicitud">
+    <div class="modal-dialog">  
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Realización de Solicitud</h4>
+        </div>
+        <div class="modal-body">   
+          <center>
+            <img src="./img/logo.png" alt="" style="width: 150px;height: 150px;">
+          </center>
+          <br>       
+          <div class="">
+            <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-12">
+                       <div class="form-group" style="text-align: left;">
+                        <label for="field-1" class="control-label">Nombres</label>
+                        <input type="text" class="form-control" id="field-1" ng-model="Cliente.nombres">
+                      </div>
+                    </div>                   
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group" style="text-align: left;">
+                        <label for="field-1" class="control-label">Apellidos</label>
+                        <input type="text" class="form-control" id="field-1" ng-model="Cliente.apellidos">
+                      </div>
+                    </div>                    
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group" style="text-align: left;">
+                        <label for="field-1" class="control-label">Correo</label>
+                        <input type="text" class="form-control" id="field-1" ng-model="Cliente.correo">
+                      </div>
+                    </div>                    
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group" style="text-align: left;">
+                        <label for="field-1" class="control-label">Teléfono</label>
+                        <input type="text" class="form-control" id="field-1" ng-model="Cliente.telefono">
+                      </div>
+                    </div>                    
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group" style="text-align: left;">
+                        <label for="field-1" class="control-label">Dirección</label>
+                        <input type="text" class="form-control" id="field-1" ng-model="Cliente.direccion">
+                      </div>
+                    </div>                    
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group" style="text-align: left;">
+                        <label for="field-1" class="control-label">Servicios</label>
+                        <select name="filtro" id="filtro" class="form-control" ng-disabled="disabledServicio" ng-model="Solicitud.idServicio">
+                           <option ng-repeat="servicio in Profesional.servicios"  value="{{servicio.id}}">{{servicio.descripcion}}</option>
+                        </select>
+                      </div>
+                    </div>                                        
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group" style="text-align: left;">
+                        <label for="field-1" class="control-label">Productos</label>
+                        <select name="filtro" id="filtro" class="form-control" ng-disabled="disabledProducto" ng-model="Solicitud.idProducto">
+                          <option ng-repeat="servicio in Profesional.productos"  value="{{servicio.id}}">{{servicio.descripcion}}</option>
+                        </select>
+                      </div>
+                    </div>                                        
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-md-offset-3">
+                <button type="button" class="btn btn-primary btn-custom btn-serch" style="width: 100%;margin-bottom: 6px" ng-click="save()">Contactar</button>
+              </div>
+            </div>            
+          </div>         
         </div>
       </div>
     </div>

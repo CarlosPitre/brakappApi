@@ -159,27 +159,22 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
       zoom: 14,
       center: {lat: 37.77, lng: -122.447}
     });
-
     directionsDisplay.setMap(map);
-
-   /* setTimeout(function  () {
+   setTimeout(function  () {
       calculateAndDisplayRoute(directionsService, directionsDisplay);
-      document.getElementById('mode').addEventListener('change', function() {
-        calculateAndDisplayRoute(directionsService, directionsDisplay);
-      });
-    },2000);   */
+    },2000); 
 
   }
 
   function calculateAndDisplayRoute(directionsService, directionsDisplay ) {
-    var selectedMode = document.getElementById('mode').value;
+    
     var latitud = parseFloat($scope.Profesional.latitud);
     var longitud = parseFloat($scope.Profesional.longitud);
     console.log($scope.Latitud);
     directionsService.route({
       origin: {lat: parseFloat($scope.Latitud), lng: parseFloat($scope.Longitud)},
       destination: {lat: latitud, lng: longitud},
-      travelMode: google.maps.TravelMode[selectedMode]
+      travelMode: google.maps.TravelMode['DRIVING']
       }, function(response, status) {
       if (status == google.maps.DirectionsStatus.OK) {
         directionsDisplay.setDirections(response);
@@ -208,8 +203,8 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
   }
 
   $scope.Solicitar = function () {
-    $("#modalLogin").modal("show");
-    /*var promiseGet = clienteService.get(localStorage.getItem("idCliente"));
+    
+    var promiseGet = clienteService.get(localStorage.getItem("idCliente"));
     promiseGet.then(function (pl) {
       $scope.Cliente = pl.data;
       if ($scope.Profesional.servicios.length == 0) {
@@ -218,11 +213,11 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
       if ($scope.Profesional.productos.length == 0) {
         $scope.disabledProducto = true;
       }
-      $scope.modalSolicitud.show();
+      $("#modalSolicitud").modal("show");
     },
     function (errorPl) {
       console.log('Error Al Cargar Datos', errorPl);
-    });*/
+    });
   }
 
   $scope.save = function () {

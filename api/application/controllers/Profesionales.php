@@ -98,6 +98,19 @@ class Profesionales extends REST_Controller {
 					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idprofesionalproducto);
 				}
 				break;
+			case 'Profesion':
+				$id = $this->post("idProfesion");
+				$profesionales = $this->model_profesional->getProfesionalesByProfesion($id);		
+				break;
+			case 'ProductoMarca':
+				$idProducto = $this->post("idProducto");
+				$idMarca = $this->post("idMarca");
+				$modelo = $this->post("modelo");
+				$profesionales = $this->model_profesional->getProfesionalesByProductoMarca($idProducto,$idMarca,$modelo);
+				for ($i=0; $i < count($profesionales); $i++) {
+					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idprofesionalproducto);
+				}
+				break;
 			default:
 				# code...
 				break;

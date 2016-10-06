@@ -9,14 +9,16 @@ class Model_solicitudes extends CI_Model{
 
   }
 
-  	public function getSolicitudes($id = null)
+  public function getSolicitudes($id = null)
 	{
 		if ($id != null) {
 			$query=$this->db
-				->select('ss.*,s.descripcion as servicio,t.descripcion as producto,c.nombres as cliente')
+				->select("ss.*,s.descripcion as servicio,CONCAT(t.descripcion,' ',m.descripcion) as producto,CONCAT(c.nombres,' ', c.apellidos) as cliente, c.telefono")
 				->from('servicio s')
 				->join('solicitud ss', 's.id = ss.idServicio', 'inner')
 				->join('producto t', ' t.id = ss.idProducto', 'inner')
+        ->join('profesionalproducto ps', 'ps.idProducto = t.id')
+        ->join('marca m','ps.idMarca = m.id','inner')
 				->join('cliente c', ' c.id = ss.idCliente', 'inner')
 				->where('ss.idProfesional', $id)
 				->get();
