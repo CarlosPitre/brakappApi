@@ -16,7 +16,10 @@ class Municipio extends REST_Controller {
 	{
 		if ($id != null) {
 			$Municipios = $this->Model_municipio->getMunicipio($id);
+		}else{
+			$Municipios = $this->Model_municipio->getMunicipio();
 		}
+
 		if ($Municipios) {
 			$this->response($Municipios, REST_Controller::HTTP_OK);
 		}else{
@@ -25,6 +28,5 @@ class Municipio extends REST_Controller {
         		'message' => 'No users were found'
             ], REST_Controller::HTTP_OK);
 		};
-		//echo "hola";
 	}
 }

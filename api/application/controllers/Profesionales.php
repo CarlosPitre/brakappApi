@@ -73,40 +73,40 @@ class Profesionales extends REST_Controller {
 	{
 
 		$tipo = $this->post("tipo");
-
+		$idMunicipio = $this->post("idMunicipio");
 		switch ($tipo) {
 			case 'Sector':
 				$id = $this->post("idSector");
-				$profesionales = $this->model_profesional->getProfesionalesBySector($id);
+				$profesionales = $this->model_profesional->getProfesionalesBySector($id,$idMunicipio);
 				break;
 			case 'Marca':
 				$id = $this->post("idMarca");
-				$profesionales = $this->model_profesional->getProfesionalesByMarca($id);
+				$profesionales = $this->model_profesional->getProfesionalesByMarca($id,$idMunicipio);
 				break;
 			case 'Servicio':
 				$id = $this->post("idServicio");
-				$profesionales = $this->model_profesional->getProfesionalesByServicio($id);
+				$profesionales = $this->model_profesional->getProfesionalesByServicio($id,$idMunicipio);
 				break;
 			case 'Empresa':
 				$id = $this->post("idProfesional");
-				$profesionales = $this->model_profesional->getProfesionalesByProfesional($id);
+				$profesionales = $this->model_profesional->getProfesionalesByProfesional($id,$idMunicipio);
 				break;
 			case 'Producto':
 				$id = $this->post("idProducto");
-				$profesionales = $this->model_profesional->getProfesionalesByProducto($id);
+				$profesionales = $this->model_profesional->getProfesionalesByProducto($id,$idMunicipio);
 				for ($i=0; $i < count($profesionales); $i++) {
 					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idprofesionalproducto);
 				}
 				break;
 			case 'Profesion':
 				$id = $this->post("idProfesion");
-				$profesionales = $this->model_profesional->getProfesionalesByProfesion($id);		
+				$profesionales = $this->model_profesional->getProfesionalesByProfesion($id,$idMunicipio);		
 				break;
 			case 'ProductoMarca':
 				$idProducto = $this->post("idProducto");
 				$idMarca = $this->post("idMarca");
 				$modelo = $this->post("modelo");
-				$profesionales = $this->model_profesional->getProfesionalesByProductoMarca($idProducto,$idMarca,$modelo);
+				$profesionales = $this->model_profesional->getProfesionalesByProductoMarca($idProducto,$idMarca,$modelo,$idMunicipio);
 				for ($i=0; $i < count($profesionales); $i++) {
 					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idprofesionalproducto);
 				}

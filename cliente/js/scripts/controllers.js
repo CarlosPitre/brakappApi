@@ -28,7 +28,10 @@ app.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
 
 app.controller('SearchCtrl',function ($scope,menuService) {
   $scope.Servicio = [];
+  $scope.Municipios = [];
+  $scope.idMunicipio = "0";
   loadServicio();
+  loadMunicipios();
   function loadServicio() {
 		var promiseGet = menuService.getJSON();
         promiseGet.then(function (pl) {
@@ -38,8 +41,19 @@ app.controller('SearchCtrl',function ($scope,menuService) {
         	console.log('Error Al Cargar Datos', errorPl);
         });
 	}
+  function loadMunicipios () {
+    var promiseGet = menuService.getMunicipios();
+    promiseGet.then(function (pl) {
+        $scope.Municipios = pl.data;
+    },
+    function (errorPl) {
+      console.log('Error Al Cargar Datos', errorPl);
+    });
+  }
   $scope.Buscar = function (json) {
+    json.idMunicipio = $scope.idMunicipio;
     sessionStorage.setItem('json', JSON.stringify(json));
+    console.log(JSON.stringify(json));
     window.location.href = "#/servicio/profesionales";
   }
 })
@@ -52,7 +66,7 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
   $scope.Profesional= {};
   $scope.filtro = "1";
   $scope.json = {};
-  $scope.title = "Mapa";
+  $scope.title = "Ver Mapa";
   $scope.loginData = {};
   $scope.disabledServicio = false;
   $scope.disabledProducto = false;
@@ -85,15 +99,68 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
   $scope.Mapa = function () {
     if ($scope.open == true) {
       $scope.open = false;
-      $scope.title = "Lista";
+      $scope.title = "Ver Lista";
       setTimeout(function(){
-        iniMap()
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 14,
+              center: {lat: position.coords.latitude, lng:position.coords.longitude}
+            });
+            var marker = new google.maps.Marker({
+              position: {lat: position.coords.latitude, lng:position.coords.longitude},
+              map: map,
+              animation: google.maps.Animation.DROP
+            });
+            var label = "Mi Posición";
+            (function(marker, label) {
+                    google.maps.event.addListener(marker, 'click', function() {
+                      var infoWindow = new google.maps.InfoWindow({mapa: map});
+                      infoWindow.setContent(label);
+                      infoWindow.open(map, marker);
+                  });
+              })(marker, label);
+
+
+            for (var i = 0; i < $scope.Profesionales.length; i++) {
+
+              var image = {
+                url:  $scope.Profesionales[i].foto,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(25, 25)
+              };
+              var marker = new google.maps.Marker({
+                position: {lat: parseFloat($scope.Profesionales[i].latitud), lng: parseFloat($scope.Profesionales[i].longitud)},
+                label : $scope.Profesionales[i].razonSocial,
+                map: map,
+                animation: google.maps.Animation.DROP
+              });
+              marker.setIcon(image);
+              var label = $scope.Profesionales[i].razonSocial;
+              (function(marker, label) {
+                      google.maps.event.addListener(marker, 'click', function() {
+                        var infoWindow = new google.maps.InfoWindow({mapa: map});
+                        infoWindow.setContent(label);
+                        infoWindow.open(map, marker);
+                    });
+                })(marker, label);
+            };
+
+
+
+            }, function() {
+
+            });
+        };
       }, 2000);
     }else{
       $scope.open = true;
-      $scope.title = "Mapa";
+      $scope.title = "Ver Mapa";
     }
   }
+
 
   $scope.Imagenes = function  (profesional) {
     $('#modalFotos').modal("show")
@@ -193,6 +260,8 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
     		localStorage.setItem("idCliente",pl.data.usuario.idCliente);
     		localStorage.setItem("idPerfil",pl.data.usuario.idPerfil);
     		localStorage.setItem("idUsuario",pl.data.usuario.id);
+        $("#modalLogin").modal("hide");
+        $scope.Solicitar();
     	}else{
         alert(pl.data.message)
     	};
@@ -203,21 +272,25 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
   }
 
   $scope.Solicitar = function () {
-    
-    var promiseGet = clienteService.get(localStorage.getItem("idCliente"));
-    promiseGet.then(function (pl) {
-      $scope.Cliente = pl.data;
-      if ($scope.Profesional.servicios.length == 0) {
-        $scope.disabledServicio = true;
-      }
-      if ($scope.Profesional.productos.length == 0) {
-        $scope.disabledProducto = true;
-      }
-      $("#modalSolicitud").modal("show");
-    },
-    function (errorPl) {
-      console.log('Error Al Cargar Datos', errorPl);
-    });
+
+    if (localStorage.getItem('idCliente') == null) {
+      $("#modalLogin").modal("show");
+    }else{
+      var promiseGet = clienteService.get(localStorage.getItem("idCliente"));
+      promiseGet.then(function (pl) {
+        $scope.Cliente = pl.data;
+        if ($scope.Profesional.servicios.length == 0) {
+          $scope.disabledServicio = true;
+        }
+        if ($scope.Profesional.productos.length == 0) {
+          $scope.disabledProducto = true;
+        }
+        $("#modalSolicitud").modal("show");
+      },
+      function (errorPl) {
+        console.log('Error Al Cargar Datos', errorPl);
+      });
+    };   
   }
 
   $scope.save = function () {
@@ -230,11 +303,142 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
     var promiseGet = profesionalService.postSolicitud(data);
     promiseGet.then(function (pl) {
       alert(pl.data)
+      $("#modalSolicitud").modal("hide");
     },
     function (errorPl) {
       console.log('Error Al Cargar Datos', errorPl);
     });
   }
+
+    var app_id = '1045182768850951';
+    var scopes = "email,user_friends,read_custom_friendlists,public_profile";
+    $scope.face;
+
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : app_id,
+        status     : true,
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v2.2'
+      });
+
+    };
+
+
+    var  statusChangeCallback = function(response, callback)
+    {
+      console.log(response);
+      if (response.status === 'connected') {
+        getFacebookData();
+      } else {
+        callback(false);
+      }
+    }
+
+    var  checkLoginState = function(callback)
+    {
+      FB.getLoginStatus(function(response) {
+        statusChangeCallback(response,function(data){
+            callback(data);
+        });
+      });
+    }
+
+
+    var getFacebookData =function()
+    {
+      FB.api('/me?fields=email,first_name,last_name,id,picture', function(response){
+        //$scope.face = response
+        registrarFacebook(response)
+        console.log('http://graph.facebook.com/'+response.id+'/picture?type=large');
+      });
+    }
+
+    function invitar_friends()
+    {
+      FB.ui({
+          method: 'apprequests',
+          message: 'Conoce BrakAPP Una Plataforma Novedosa'
+      });
+    }
+
+    var friends = function(){
+      FB.api("/me/friends", function (response) {
+         console.log(response)
+      });
+    }
+
+    var facebookLogin = function()
+    {
+      checkLoginState(function(response){
+        if(!response){
+          FB.login(function(response){
+          if(response.status === 'connected')
+            getFacebookData();
+          },{scope:scopes});
+        }
+      })
+    }
+
+    $(document).on('click', '#facebookLogin', function(e){
+      e.preventDefault();
+      facebookLogin();
+    })
+
+    $(document).on('click', '#facebookInvitar', function(e){
+      e.preventDefault();
+      invitar_friends();
+    })
+
+    function registrarFacebook(response) {
+
+      var promiseGet = clienteService.loginFaebook(response);
+      promiseGet.then(function (pl) {
+        var status = pl.data.status;
+        console.log(pl.data);
+        if (status == 1) {
+          localStorage.setItem("idCliente",pl.data.usuario.idCliente);
+          localStorage.setItem("idPerfil",pl.data.usuario.idPerfil);
+          localStorage.setItem("idUsuario",pl.data.usuario.id);
+          $("#modalLogin").modal("hide");
+          $scope.Solicitar();
+        }else{
+          alert(pl.data.message)
+        };
+      },
+      function (errorPl) {
+        console.log('Error Al Cargar Datos', errorPl);
+      });
+    }
+
+    $scope.registrar = function  () {
+      var promiseGet = clienteService.post($scope.Cliente);
+      promiseGet.then(function (pl) {
+       var status = pl.data.status;
+       if (status == 1) {
+          localStorage.setItem("idCliente",pl.data.usuario.idCliente);
+          localStorage.setItem("idPerfil",pl.data.usuario.idPerfil);
+          localStorage.setItem("idUsuario",pl.data.usuario.id);
+          $("#modalLogin").modal("hide");
+          $scope.Solicitar();
+        }else{
+          alert(pl.data.message)
+        };
+      },
+      function (errorPl) {
+        console.log('Error Al Cargar Datos', errorPl);
+      });
+    }
+
 
 })
 

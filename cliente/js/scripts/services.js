@@ -5,6 +5,10 @@ app.service('menuService', function($http) {
 		var req = $http.get(uri + '/app/json');
 		return req;
 	}
+  this.getMunicipios = function  () {
+    var req = $http.get(uri + '/app/municipios');
+    return req;
+  }
 })
 
 app.service('solicitudService',function ($http) {
@@ -50,4 +54,12 @@ app.service('clienteService', function($http) {
 		var req = $http.get(uri + '/app/clientes/' + id);
 		return req;
 	}
+  this.loginFaebook = function  (object) {
+    var req = $http.post(uri + '/app/facebook', object);
+    return req;
+  }
+  this.post = function  (object) {
+    var req = $http.post(uri + '/app/usuario', object);
+    return req;
+  }
 })

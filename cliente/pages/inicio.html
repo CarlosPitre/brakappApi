@@ -4,11 +4,10 @@
             <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control hcustom40" matchclass="highlight" />
         </div> 
         <div class="col-xs-6 col-sm-3 col-md-3">
-            <select class="form-control hcustom40">
-                <option>opcion 1</option>
-                <option>opcion 2</option>
-                <option>opcion 3</option>
-                <option selected>Seleccione ciudad</option>
+
+            <select class="form-control hcustom40" ng-model= "idMunicipio">
+                <option value="0" selected>Seleccionar Una Ciudad</option>
+                <option value="{{municipio.id}}" ng-repeat="municipio in Municipios">{{municipio.nombre}}</option>
             </select>
         </div>      
         <div class="col-xs-12 col-sm-2 col-md-2">

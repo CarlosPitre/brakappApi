@@ -46,6 +46,9 @@ $route['app/respuestas/(:num)'] = 'solicitudes/respuestas/$1';
 $route['app/departamentos']  = 'departamento/departamento';
 $route['app/departamentos/(:num)']  = 'departamento/departamento/$1';
 $route['app/municipios']  = 'municipio/municipio';
+$route['app/facebook']  = 'usuario/facebook';
+$route['app/password']  = 'usuario/restaurarpass';
+$route['app/usuario']  = 'usuario/usuario';
 $route['app/municipios/(:num)']  = 'municipio/municipio/$1';
 
 

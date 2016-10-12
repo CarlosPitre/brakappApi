@@ -2,7 +2,7 @@
 <div class="wrap-search">
     <div class="row">
       <div class="col-md-2">
-          <button type="button" class="btn btn-primary btn-custom btn-serch"  ng-click="Mapa()" >Ver Mapa</button>
+          <button type="button" class="btn btn-primary btn-custom btn-serch"  ng-click="Mapa()" >{{title}}</button>
         </div>
         <div class="col-md-4">
           <div class="append-icon">
@@ -192,7 +192,7 @@
               <div class="row">
                 <div class="col-md-6 col-md-offset-3">
                   <button type="button" class="btn btn-primary btn-custom btn-serch" style="width: 100%;margin-bottom: 6px" ng-click="iniciarSesion()">Iniciar Sesión</button>
-                  <button type="button" class="btn btn-primary" style="width: 100%">Iniciar Sesión Con Facebook</button>
+                  <button type="button" id="facebookLogin" class="btn btn-primary" style="width: 100%">Iniciar Sesión Con Facebook</button>
                 </div>                
               </div> 
              
@@ -200,9 +200,48 @@
             <!-- Tab Registrarse  -->
             <div id="registrarse" class="tab-pane fade">            
               <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                  <button type="button" class="btn btn-primary btn-custom btn-serch" style="width: 100%;margin-bottom: 6px" ng-click="iniciarSesion()">Iniciar Sesión</button>
-                  <button type="button" class="btn btn-primary" style="width: 100%">Iniciar Sesión Con Facebook</button>
+                <div class="">
+                  <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
+                      <label for="field-1" class="control-label">Nombres</label>
+                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.nombres">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
+                      <label for="field-1" class="control-label">Apellidos</label>
+                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.apellidos">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
+                      <label for="field-1" class="control-label">Dirección</label>
+                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.direccion">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
+                      <label for="field-1" class="control-label">Teléfono</label>
+                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.telefono">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
+                      <label for="field-1" class="control-label">Correo</label>
+                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.correo">
+                    </div>
+                  </div>                 
+                  <div class="row">
+                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
+                      <label for="field-1" class="control-label">Contraseña</label>
+                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.password">
+                    </div>
+                  </div>
+                  <div class="col-md-6 col-md-offset-3">
+                    <button type="button" class="btn btn-primary btn-custom btn-serch" style="width: 100%;margin-bottom: 6px" ng-click="registrar()">Registrarse</button>
+                    <button type="button" id="facebookLogin" class="btn btn-primary" style="width: 100%">Registrarse Con Facebook</button>
+                  </div>
+                  
                 </div>                
               </div> 
             </div>

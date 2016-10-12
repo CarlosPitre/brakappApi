@@ -12,12 +12,16 @@ class Model_municipio extends CI_Model {
 
 	public function getMunicipio($id = null)
 	{
-
-         if ($id != null) {
+        if ($id != null) {
 			$query=$this->db
 				->select('m.*')
 				->from('municipio m')
 				->where('m.idDepartamento', $id)
+				->get();
+		}else{
+			$query = $this->db->select('m.*')
+				->from('municipio m')						
+				->join('profesional p', 'm.id = p.idMunicipio', 'inner')			
 				->get();
 		}
 		return $query->result();
