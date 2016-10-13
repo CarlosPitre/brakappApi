@@ -1,0 +1,101 @@
+.logo
+            {
+                text-align: center;
+                
+            }
+            .imglogo
+            {
+                width: 140px;
+                margin-top: 50px;
+            }
+
+            /*
+            .footer
+            {
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                height: 55%;
+                padding-top: 200px;
+                color:#303030 !important;
+                background: #df2e5e;
+                padding-right: 10px;
+                z-index: 1;
+            }*/
+
+            .footer{
+              width: 100%;
+              margin-top: 52px !important;
+
+
+            }
+            .contaner{
+              border: thin solid #000;
+              background: orange
+            }
+            body
+            {
+              background: #df2e5e;
+            }
+
+            .mp{
+              margin: 0 !important;
+              background: #df2e5e;
+              /*padding-top: 11.6% !important;*/
+              padding-top: 80px !important;
+
+            }
+            .dkp
+            {
+              
+            }
+
+            .imgcol
+            {
+              text-align: center;
+            }
+
+            /*styles inicio*/
+            .searchbox{
+                background: rgba(45,45,45, 0.8);
+                position: absolute;top:-10px;z-index: 1000;
+                padding-top: 10px;
+                border-radius: 5px;
+                
+              }
+
+
+              .btn-success
+              {
+                background:#0284cb;
+              }
+
+              .btn-success:hover
+              {
+                background: #0268A1;
+              }
+
+              .mybutton
+              {
+                
+              }
+
+              .mlp
+              {
+                top: 50%;
+                margin-top: -1em; /*set to a negative number 1/2 of your height*/
+                position: relative;z-index: 1
+                
+              }
+
+              .tcnt
+              {
+                width:100%; padding-top: 4px;
+              }
+                
+
+
+            .cntp
+            {
+                background: #FFF;
+            }

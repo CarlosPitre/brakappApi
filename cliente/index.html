@@ -12,16 +12,154 @@
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link href="../assets/global/plugins/font-awesome-animation/font-awesome-animation.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/awesome/font-awesome.css">
+    <link rel="stylesheet" href="css/inicio.css">
     <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">-->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/vendor/modernizr-2.8.3.min.js"></script>
-    <script src="http://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDfPMQBxzjxxb6yDbU65aVxY-IhDhwETwU" type="text/javascript"></script>
+    <script src="http://maps.googleapis.com/maps/api/
+    js?libraries=places&key=AIzaSyDfPMQBxzjxxb6yDbU65aVxY-IhDhwETwU" type="text/javascript"></script>
+
+
+    
   </head>
 
-    <body>   
+    <body> 
+        <div class="container-fluid cntp">
+            <div class="row">
+            <div class="col-md-4 col-md-push-8">
+              <nav class="navbar navbar-default ">
+                <div class="">
+                  <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
+                  </div>
+                  <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                      <li class="active"><a href="#">Inicio</a></li>
+                      <li><a href="#">Registrate</a></li>
+                      <li><a href="#">Iniciar Sesion</a></li>
+                      <li><a href="#">Soporte</a></li>
+                     
+                    </ul>
+                    
+                  </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid -->
+        </nav>      
+            </div>
+          </div>
+        </div>  
       
         <div ng-view></div>
+
+        <div class="container-fluid mp">
+    <div class="row">
+      <div class="col-md-8 col-sm-8 col-md-push-2 col-sm-push-2">
+      <div class="row">
+        <div class="col-md-4 col-sm-4 imgcol">
+          <img src="../img/img1.png" alt="" width="160px">
+        </div>
+        <div class="col-md-4 col-sm-4 imgcol" >
+          <img src="../img/img2.png" alt="" width="160px">
+        </div>
+        <div class="col-md-4 col-sm-4 imgcol">
+          <img src="../img/img3.png" alt="" width="160px">
+        </div>
+      </div>
+      </div>
+    </div>
+      <div class="footer" >
+        <div class="row">
+          <div class="col-md-6 col-sm-6" style="color:#FFF;">
+            <h4>Copyright <span class="copyright">©</span>  BrabkApp S.A.S 2016  </h4>
+          </div>
+
+          <div class="col-md-6 " >
+            <div >
+                  <div class="col-md-6">
+                      <img src="../img/appstore.png" width="130px" style=" margin-right: 10px;" alt="">
+                <img src="../img/google-play-badge.png" width="120px" style=" margin-right: 10px;" alt="">
+                  </div>
+                
+                  <div class="col-md-1 pull-right">
+                   <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-facebook"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-google"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-instagram"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-twitter"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-android"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-success btn-lg" ><i class="fa fa-apple"></i></button>
+                  </div>
+               </div>
+          </div>
+        </div>
+        <!--
+        <div class="row" style="border:thin solid #000;">
+            <div class="col-md-4 ">
+                <div class="pull-right">                  
+                
+                <img src="../img/appstore.png" width="130px" style=" margin-right: 10px;" alt="">
+                <img src="../img/google-play-badge.png" width="120px" style=" margin-right: 10px;" alt="">
+                </div>
+            </div>
+            <div class="col-md-3">
+            <div class="copyright" style="margin-right: 30px; color: #FFF !important;">
+              <p class="pull-right sm-pull-reset ">
+              <span>Copyright <span class="copyright">©</span> 2016 </span>
+              <span>Brakapp S.A.S </span>.
+              </p>
+            </div>
+          </div>
+        
+        <div class="col-md-5 ">
+            <div >
+                
+                  <div class="col-md-1 pull-right">
+                   <button class="btn btn-sm btn-icon btn-rounded btn-danger btn-lg" ><i class="fa fa-facebook"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-danger btn-lg" ><i class="fa fa-google"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-danger btn-lg" ><i class="fa fa-instagram"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-danger btn-lg" ><i class="fa fa-twitter"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-danger btn-lg" ><i class="fa fa-android"></i></button>
+                  </div>
+                  <div class="col-md-1 pull-right">
+                  <button class="btn btn-sm btn-icon btn-rounded btn-danger btn-lg" ><i class="fa fa-apple"></i></button>
+                  </div>
+               </div>
+              
+
+          </div>
+          
+        </div>
+
+        -->
+        
+      </div>
+
+      </div>
+
         
         <script src="js/jquery.backstretch.min.js"></script>
         <script src="js/main.js"></script>  

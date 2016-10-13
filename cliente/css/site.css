@@ -158,7 +158,9 @@ nav {
 .wrap-search{
     background: rgba(0,0,0,0.5);
     /*padding: 4em 4em 4em 2em;*/
-    padding: 3em 4.5em 3em 2em;
+    /**padding: 3em 4.5em 3em 2em;*/
+    padding:1em 2.5em 1em 1em  !important;
+    border-radius: 4px;
 }
 
 
@@ -173,11 +175,16 @@ nav {
 
 .btn-serch{
   color: white !important;
-  background-color: #FB135C !important;
+  background-color: #0284cb !important;
   font-weight: bold !important;
   border:none !important;
 }
 
+
+.btn-serch:hover
+{
+  background: #0268A1 !important;  
+}
 
 /*
  * Affix and center
@@ -243,3 +250,22 @@ nav {
 }
 
 
+
+
+
+.logo
+    {
+        text-align: center;
+    }
+
+    .wrapperrelative{
+        width: 100%;
+        position: relative;
+    }
+
+    .wrapperabsolute
+    {
+        position: absolute; 
+        width: 100%;
+        top: -30px;
+    }
