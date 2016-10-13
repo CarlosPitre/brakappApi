@@ -318,7 +318,7 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
       var js, fjs = d.getElementsByTagName(s)[0];
       if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/sdk.js";
+        js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.8&appId=1045182768850951";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
@@ -398,6 +398,17 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
       e.preventDefault();
       invitar_friends();
     })
+
+    $(document).ready(function(){
+      var contentHtml = [
+      '<div>',
+          '<div class="fb-share-button" data-href="https://brakapp.com" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore btn btn-primary" style = "width:150px;" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fbrakapp.com%2F&amp;src=sdkpreparse">Facebook</a></div>',
+      '</div>'].join('\n');
+      $('[data-toggle="popover"]').popover({
+        html: true,
+        content: contentHtml,
+      });
+    });
 
     function registrarFacebook(response) {
 
