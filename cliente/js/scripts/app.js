@@ -1,7 +1,7 @@
 var uri = "../api";
 var app;
 (function  () {
-	app = angular.module("brackapp", ['ngRoute','angucomplete']);
+	app = angular.module("brackapp", ['ngRoute','angucomplete', 'ui.bootstrap']);
 	app.config(['$routeProvider', '$locationProvider',function AppConfig($routeProvider,$locationProvider) {
 		$routeProvider
 			.when("/inicio",{

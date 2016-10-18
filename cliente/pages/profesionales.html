@@ -37,6 +37,9 @@
                     <div class="col-md-4">
                       <h2><strong>{{profesional.razonSocial}}</strong></h2>
                       <p><strong>{{profesional.municipio}}</strong></p>
+                      <div ng-init="x = profesional.calificacion">
+                        <span uib-rating ng-model="x" max="5" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'" aria-labelledby="custom-icons-1"></span> <b>(<i>Calificación:</i> {{x}})</b>
+                      </div>
                       <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>
                     </div>
                     <div class="col-md-2">
