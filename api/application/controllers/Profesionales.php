@@ -140,6 +140,79 @@ class Profesionales extends REST_Controller {
 		};
 	}
 
+	public function busquedaGeneralProfesionalesDistancia_post()
+	{
+
+		$tipo = $this->post("tipo");
+		$lat = $this->post("latitud");
+		$lgn = $this->post("longitud");
+
+		switch ($tipo) {
+			case 'Sector':
+				$id = $this->post("idSector");
+				$profesionales = $this->model_profesional->getProfesionalesBySectorDistancia($id,$lat,$lgn);
+				break;
+			case 'Marca':
+				$id = $this->post("idMarca");
+				$profesionales = $this->model_profesional->getProfesionalesByMarcaDistancia($id,$lat,$lgn);
+				break;
+			case 'Servicio':
+				$id = $this->post("idServicio");
+				$profesionales = $this->model_profesional->getProfesionalesByServicioDistancia($id,$lat,$lgn);
+				break;
+			case 'Empresa':
+				$id = $this->post("idProfesional");
+				$profesionales = $this->model_profesional->getProfesionalesByProfesionalDistancia($id,$lat,$lgn);
+				break;
+			case 'Producto':
+				$id = $this->post("idProducto");
+				$profesionales = $this->model_profesional->getProfesionalesByProductoDistancia($id,$lat,$lgn);
+				break;
+			case 'Profesion':
+				$id = $this->post("idProfesion");
+				$profesionales = $this->model_profesional->getProfesionalesByProfesionDistancia($id,$lat,$lgn);		
+				break;
+			case 'ProductoMarca':
+				$idProducto = $this->post("idProducto");
+				$idMarca = $this->post("idMarca");
+				$modelo = $this->post("modelo");
+				$profesionales = $this->model_profesional->getProfesionalesByProductoMarcaDistancia($idProducto,$idMarca,$modelo,$lat, $lgn);
+				for ($i=0; $i < count($profesionales); $i++) {
+					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idprofesionalproducto);
+				}
+				break;
+			default:
+				# code...
+				break;
+		}
+
+		for ($i=0; $i < count($profesionales); $i++) {
+			$profesionales[$i]->status = FALSE;
+			$profesionales[$i]->button = "Ver Mas";
+			$profesionales[$i]->mapa = FALSE;
+			$servicios = $this->model_profesional->getServicios($profesionales[$i]->id);
+			$profesionales[$i]->servicios = $servicios;
+			$productos = $this->model_profesional->getProductos($profesionales[$i]->id);
+			$profesionales[$i]->productos = $productos;
+		}
+
+		if ($profesionales) {
+			$this->response([
+       			'status' => 1,
+        		'profesionales' => $profesionales
+            ], REST_Controller::HTTP_OK);
+		}else{
+	        $this->response([
+       			'status' => 0,
+        		'message' => 'No hay Empleados Con Ese Servicios',
+        		'profesionales' => []
+            ], REST_Controller::HTTP_OK);
+		};
+	}
+
+
+
+
 	public function busquedaGeneralProfesionalesVisitados_post()
 	{
 
@@ -166,6 +239,7 @@ class Profesionales extends REST_Controller {
 				$id = $this->post("idProducto");
 				$profesionales = $this->model_profesional->getProfesionalesByProductoVisitados($id);
 				break;
+
 			default:
 				# code...
 				break;
@@ -195,62 +269,7 @@ class Profesionales extends REST_Controller {
 		};
 	}
 
-	public function getProfesionalesBySectorDistancia_post()
-	{
-
-		$tipo = $this->post("tipo");
-		$lat = $this->post("latitud");
-		$lgn = $this->post("longitud");
-
-		switch ($tipo) {
-			case 'Sector':
-				$id = $this->post("idSector");
-				$profesionales = $this->model_profesional->getProfesionalesBySectorDistancia($id,$lat,$lgn);
-				break;
-			case 'Marca':
-				$id = $this->post("idMarca");
-				$profesionales = $this->model_profesional->getProfesionalesByMarcaVisitados($id,$lat,$lgn);
-				break;
-			case 'Servicio':
-				$id = $this->post("idServicio");
-				$profesionales = $this->model_profesional->getProfesionalesByServicioVisitados($id,$lat,$lgn);
-				break;
-			case 'Empresa':
-				$id = $this->post("idProfesional");
-				$profesionales = $this->model_profesional->getProfesionalesByProfesionalVisitados($id,$lat,$lgn);
-				break;
-			case 'Producto':
-				$id = $this->post("idProducto");
-				$profesionales = $this->model_profesional->getProfesionalesByProductoVisitados($id,$lat,$lgn);
-				break;
-			default:
-				# code...
-				break;
-		}
-
-		for ($i=0; $i < count($profesionales); $i++) {
-			$profesionales[$i]->status = FALSE;
-			$profesionales[$i]->button = "Ver Mas";
-			$profesionales[$i]->mapa = FALSE;
-			$servicios = $this->model_profesional->getServicios($profesionales[$i]->id);
-			$profesionales[$i]->servicios = $servicios;
-			$productos = $this->model_profesional->getProductos($profesionales[$i]->id);
-			$profesionales[$i]->productos = $productos;
-		}
-
-		if ($profesionales) {
-			$this->response([
-       			'status' => 1,
-        		'profesionales' => $profesionales
-            ], REST_Controller::HTTP_OK);
-		}else{
-	        $this->response([
-       			'status' => 0,
-        		'message' => 'No hay Empleados Con Ese Servicios',
-        		'profesionales' => []
-            ], REST_Controller::HTTP_OK);
-		};
-	}
+	
 
 
 

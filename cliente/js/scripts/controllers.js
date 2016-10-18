@@ -58,7 +58,7 @@ app.controller('SearchCtrl',function ($scope,menuService) {
   }
 })
 
-app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteService) {
+app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteService,menuService) {
   $scope.idProfesional;
   $scope.open = true;
   $scope.Profesionales = [];
@@ -72,24 +72,56 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
   $scope.disabledProducto = false;
   $scope.Cliente = {};
   $scope.Solicitud = {};
+  $scope.json = JSON.parse(sessionStorage.getItem('json'));
+  $scope.Servicio = [];
+  $scope.Municipios = [];
+  $scope.idMunicipio = "0";
+  loadServicio();
+  loadMunicipios();
+  function loadServicio() {
+    var promiseGet = menuService.getJSON();
+    promiseGet.then(function (pl) {
+        $scope.Servicio = pl.data;
+    },
+    function (errorPl) {
+      console.log('Error Al Cargar Datos', errorPl);
+    });
+  }
+  function loadMunicipios () {
+    var promiseGet = menuService.getMunicipios();
+    promiseGet.then(function (pl) {
+        $scope.Municipios = pl.data;
+    },
+    function (errorPl) {
+      console.log('Error Al Cargar Datos', errorPl);
+    });
+  }
+  $scope.Buscar = function (json) {
+    json.idMunicipio = $scope.idMunicipio;
+    sessionStorage.setItem('json', JSON.stringify(json));
+    var promiseGet = profesionalService.postJSON(json);
+    promiseGet.then(function (pl) {
+        $scope.Profesionales = pl.data.profesionales;
+    },
+    function (errorPl) {
+      console.log('Error Al Cargar Datos', errorPl);
+    });
+  }
 
   getProfesionales();
 
   function getProfesionales () {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-          console.log(position);
+      navigator.geolocation.getCurrentPosition(function(position) {  
           $scope.Latitud = position.coords.latitude;
           $scope.Longitud = position.coords.longitude;
-          console.log($scope.Latitud);
+          $scope.json.latitud = position.coords.latitude;
+          $scope.json.longitud = position.coords.longitude;
       })
-    };
-    $scope.json = JSON.parse(sessionStorage.getItem('json'));
-    console.log(JSON.stringify($scope.json));
+    };   
     var promiseGet = profesionalService.postJSON($scope.json);
     promiseGet.then(function (pl) {
         $scope.Profesionales = pl.data.profesionales;
-        console.log(JSON.stringify($scope.Profesionales));
     },
     function (errorPl) {
       console.log('Error Al Cargar Datos', errorPl);
@@ -192,7 +224,7 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
 				getProfesionalesVisitados()
 				break;
 			case "4":
-				//getProfesionalesDistancia()
+				getProfesionalesDistancia()
 				break;
 		}
 	}
