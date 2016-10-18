@@ -1,6 +1,7 @@
 <style>
-  body
+  body, html
   {
+
     background: #FFF !important;
   }
 </style>
@@ -25,17 +26,17 @@
           </select>
       </div>      
       <div class="col-xs-12 col-sm-2 col-md-2">
-          <button class="btn btn-success btn-custom hcustom40 btn-serch" ng-click="Buscar(selectedServicio.originalObject)"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Buscar </button>
+          <button class="btn btn-success btn-custom hcustom40 btn-serch btn-block" ng-click="Buscar(selectedServicio.originalObject)"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Buscar </button>
       </div>
 </div>
 
-<div class="col-md-10 col-md-push-1">
+<div class="col-md-10 col-md-push-1" style="margin-bottom:30px !important;">
   
 
 <div class="wrap-search">
     <div class="row">
       <div class="col-md-2">
-          <button type="button" class="btn btn-primary btn-custom btn-serch btn-large"  ng-click="Mapa()" >{{title}}</button>
+          <button type="button" class="btn btn-primary btn-custom btn-serch btn-block"  ng-click="Mapa()" >{{title}}</button>
         </div>
         <div class="col-md-4">
           <div class="append-icon">
@@ -50,14 +51,14 @@
           </select>
         </div>       
         <div class="col-md-2">
-          <a href="javascript:;" title="Compartir" class="btn btn-primary btn-custom btn-serch" data-toggle="popover" data-placement="bottom" target="_self" style="width: 100%">Compartir</a>
+          <a href="javascript:;" title="Compartir" class="btn btn-primary btn-custom btn-serch btn-block" data-toggle="popover" data-placement="bottom" target="_self" style="width: 100%">Compartir</a>
         </div>
     </div>
     <br>
     <div class="row">
       <div class="col-md-12" >
         <div ng-show="open" style="color:black">
-          <div ng-repeat="profesional in Profesionales | filter : filter" style="margin: 10px 30px !important;">
+          <div ng-repeat="profesional in Profesionales | filter : filter" style="margin: 10px 17px !important;">
             <div class="row">
               <div class="panel col-md-12">
                 <div class="panel-content">
@@ -66,12 +67,12 @@
                       <img src="{{profesional.foto}}" alt="" style="width:140px;height:140px;">
                     </div>
                     <div class="col-md-4">
-                      <h2><strong>{{profesional.razonSocial}}</strong></h2>
+                      <h2><strong style="color:#464646;">{{profesional.razonSocial}}</strong></h2>
                       
                       <div ng-init="x = profesional.calificacion">
                         <span uib-rating ng-model="x" max="5" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'" read-only="true" aria-labelledby="custom-icons-1" style="color:#00E01D"></span> <b>(<i>Calificación:</i> {{x}})</b>
                       </div>
-                      <p><strong>{{profesional.municipio}}</strong></p>
+                      <p>{{profesional.municipio}}</p>
                       <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>
                     </div>
                     <div class="col-md-2">
