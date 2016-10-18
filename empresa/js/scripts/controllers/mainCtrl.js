@@ -1,7 +1,7 @@
 app.controller('mainCtrl', function($scope,menuService){
 	
 	$scope.Menu = [];
-	$scope.idPerfil = "3";
+	$scope.idPerfil = localStorage.getItem('idPerfil_br');
 
 	loadMenu();
 

@@ -1,0 +1,90 @@
+<div class="">
+<div class="row">
+    <div class="col-md-8">
+      <div class="append-icon">
+            <input type="text" name="firstname" id="finder" class="form-control form-white input-sm" placeholder="Search..." autofocus ng-model="filter">
+            <i class="icon-magnifier"></i>
+          </div>
+    </div>
+    <div class="col-md-2" >
+      <button style="background:#95C92C;"  type="button" class="btn btn-white btn" ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
+    </div>    
+  </div>
+
+	 <div class="row">
+            <div class="col-lg-12 portlets">
+              <div class="panel">
+                <div class="panel-header panel-controls">
+                  
+                </div>
+                <div class="panel-content">
+                  <div class="filter-left">
+                    <table class="table table-bordered  ">
+                      <thead>
+                        <tr style="color:white;">
+                          <th>#</th>
+                          <th>Descripción</th>
+                          <th >Estado</th>
+                          <th >Opciones</th>                       
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="sector in Sectores | filter:filter ">
+                        	<td>{{sector.id}}</td>
+                        	<td>{{sector.descripcion}} </td>
+                        	<td>{{sector.estado}} </td>
+                        	<td>
+                        		<a href="javascript:;" ng-click="modificar(sector)" data-toggle="modal" data-target="#modal-responsive">Modficiar</a>
+                        		<a href="javascript:;" ng-click="delete(sector.id)">Eliminar</a>
+                        	</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+	<div class="modal fade" id="modal-responsive" aria-hidden="true">
+		<div class="modal-dialog ">
+		  <div class="modal-content">
+		    <div class="modal-header">
+		      <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+		      <h4 class="modal-title">GESTIÓN DE SECTORES</h4>
+		    </div>
+		    <div class="modal-body">
+		     	
+		      <div class="row">
+		        <div class="col-md-12">
+		        	
+		        	<div class="form-group">
+		    			<div class="t-center">
+		            		<label for="field-1" class="control-label">Descripción</label>
+		            		<input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Sistemas,Plomeria,Electricidad..." ng-model="Sector.descripcion">
+		          		</div>     		
+		        	</div>	              
+		        </div>
+		       </div>
+		    </div>
+		    <div class="modal-footer text-center">
+		      <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
+		      <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="update()" ng-hide="openButton"><i class="fa fa-check"></i> Modificar</button>
+		    </div>
+		  </div>
+		</div>
+	</div>
+
+</div>
+<script src="../assets/global/plugins/modernizr/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+<script src="../assets/global/plugins/datatables/jquery.dataTables.min.js"></script> <!-- Tables Filtering, Sorting & Editing -->
+<script src="../assets/global/js/pages/table_dynamic.js"></script>
+
+
+
+<script src="js/builder.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/plugins.js"></script> 
+    <script src="js/quickview.js"></script>
+
+    

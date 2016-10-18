@@ -1,0 +1,144 @@
+<div class="">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="append-icon">
+        <input type="text" name="firstname" id="finder" class="form-control form-white input-sm" placeholder="Search..." autofocus ng-model="filter">
+        <i class="icon-magnifier"></i>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <button type="button" class="btn btn-primary"><i class="fa fa-money"></i> Pago Masivo</button>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-lg-12 portlets">
+      <div class="panel">
+        <div class="panel-content">
+          <div class="filter-left">
+          <table class="table table-bordered ">
+            <thead>
+                <th>Nit</th>
+                <th>Nombre</th>
+                <th>E-Mail</th>
+                <th>Telefono</th>
+                <th>
+                  Municipio
+                </th>
+                <th>
+                  Visitas
+                </th>
+                <th>
+                  Dias
+                </th>
+                <th >Estado</th>
+                <th>
+                 Pagos
+                </th>
+
+            </thead>
+            <tbody>
+              <tr ng-repeat="emp in Profesionales| filter:filter" ng-class="{'warning-class': emp.estado === 'Inactivo'}">
+                <td>{{emp.identificacion}}</td>
+                <td>{{emp.razonSocial}} </td>
+                <td>{{emp.correo}} </td>
+                <td>{{emp.telefono}} </td>
+                <td>
+                  {{emp.municipio}}
+                </td>
+                <td>
+                  {{emp.numeroPersonas}}
+                </td>
+                <td>
+                  {{emp.diasRestantes}}
+                </td>
+                <td>{{emp.estado}} </td>
+                <td>
+                  <button type="button" class="btn btn-primary"><i class="icon-like"></i>Ver</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-primary" ng-click="openModal(emp)"><i class="fa fa-money"></i> Pago Manual</button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-success"><i class="fa fa-save"></i></button>
+                </td>
+                <td>
+                  <button type="button" class="btn btn-danger"><i class="fa fa-cut"></i></button>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalPago" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
+          <h2 class="modal-title">GESTIÓN DE PAGO</h2>
+        </div>
+        <div class="modal-body">
+          
+          <div class="row">
+            <div class="col-md-6">              
+              <div class="form-group">
+                <div>
+                  <label for="field-1" class="control-label">Nit</label>
+                  <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.identificacion" disabled>
+                </div>        
+              </div>                
+            </div>
+            <div class="col-md-6">              
+              <div class="form-group">
+                <div>
+                  <label for="field-1" class="control-label">Razón Social</label>
+                  <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.razonSocial" disabled>
+                </div>        
+              </div>                
+            </div>
+            <div class="col-md-6">              
+              <div class="form-group">
+                <div>
+                  <label for="field-1" class="control-label">Email</label>
+                  <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.correo" disabled>
+                </div>        
+              </div>                
+            </div>
+            <div class="col-md-6">              
+              <div class="form-group">
+                <div>
+                  <label for="field-1" class="control-label">Teléfono</label>
+                  <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.telefono" disabled>
+                </div>        
+              </div>                
+            </div>
+            <div class="col-md-6">              
+              <div class="form-group">
+                <div>
+                  <label for="field-1" class="control-label">Valor a Pagar</label>
+                  <input type="text" class="form-control form-white" id="field-1" ng-model="Profesional.valorPago">
+                </div>        
+              </div>                
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer text-center">
+          <button type="button" class="btn btn-danger btn-embossed bnt-square" ng-click="savePago()"><i class="fa fa-check"></i> Guardar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+<style>
+  .warning-class {
+    background-color: #BB0000;
+    color: white;
+  }
+
+</style>
