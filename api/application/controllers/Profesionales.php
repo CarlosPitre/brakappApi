@@ -89,7 +89,7 @@ class Profesionales extends REST_Controller {
 				break;
 			case 'Empresa':
 				$id = $this->post("idProfesional");
-				$profesionales = $this->model_profesional->getProfesionalesByProfesional($id,$idMunicipio);
+				$profesionales = $this->model_profesional->getProfesionalesByProfesionales($id,$idMunicipio);
 				break;
 			case 'Producto':
 				$id = $this->post("idProducto");
