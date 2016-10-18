@@ -10,13 +10,33 @@
         <link href="../assets/global/css/style.css" rel="stylesheet">
         <link href="../assets/global/css/ui.css" rel="stylesheet">
         <link href="../assets/global/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
+
+        <style>
+            body{
+                background: #FFF !important;
+            }
+
+            .sombra
+            {
+                -webkit-box-shadow: 0px 5px 6px -1px rgba(0,0,0,0.75);
+                -moz-box-shadow: 0px 5px 6px -1px rgba(0,0,0,0.75);
+                box-shadow: 0px 5px 6px -1px rgba(0,0,0,0.75);
+            }
+        </style>
     </head>
-    <body class="sidebar-light account2" data-page="login">
+    <body class="sidebar-light account2" data-page="login" >
         <!-- BEGIN LOGIN BOX -->
-        <div class="container" id="login-block">
+
+        <div class="container" id="login-block" >
+
             <i class="user-img icons-faces-users-03"></i>
-            <div class="account-info">
-                <a href="dashboard.html" class="logo"></a> 
+            <div style="width: 100%;text-align: center;margin-bottom: 10px;">
+            <img src="../img/logobrakapp.png" width="150px" alt="">
+            </div>
+            <div class="sombra">
+
+            <div class="account-info ">
+
                 <h5>Comerciar Nunca Fue Tan Facil</h5>
                 <ul>
                     <li><i class="icon-magic-wand"></i> Fully customizable</li>
@@ -25,7 +45,7 @@
                     <li><i class="icon-drop"></i> Colors options</li>
                 </ul>
             </div>
-            <div class="account-form">
+            <div class="account-form " style="border: thin solid #cbcbcb; border-left:0 !important;" >
                 <form class="form-signin" role="form" ng-controller="loginCtrl">
                     <h3><strong>Bienvenido</strong> A Brackapp</h3>
                     <div class="append-icon">
@@ -36,14 +56,10 @@
                         <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model="pass">
                         <i class="icon-lock"></i>
                     </div>
-                    <button  class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" ng-click="login()">Iniciar Sesión</button>
-                    <a href="registrar.html" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" >Registrarse</a>
+                    <button  class="btn btn btn-dark btn-rounded ladda-button btn-success" data-style="expand-left" ng-click="login()">Iniciar Sesión</button>
+                    <a href="registrar.html" class="btn btn btn-dark btn-rounded ladda-button btn-primary" data-style="expand-left" >Registrarse</a>
                     <span class="forgot-password"><a id="password" href="account-forgot-password.html">Olvido Su Contraseña? </a></span>
-                    <div class="form-footer">
-                        <div class="clearfix">
-                            <p class="new-here"><a href="user-signup-v2.html">BrackApp</a></p>
-                        </div>
-                    </div>
+
                 </form>
                 <form class="form-password" role="form">
                     <h3><strong>Reset</strong> your password</h3>
@@ -57,6 +73,7 @@
                         <p class="pull-right m-t-20 m-b-0"><a href="user-signup2.html">New here? Sign up</a></p>
                     </div>
                 </form>
+            </div>
             </div>
         </div>
 

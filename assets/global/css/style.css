@@ -7006,7 +7006,7 @@ body:not(.fixed-topbar) .main-content .page-content {
     height: 100%;
     margin: auto;
     position: relative;
-    width: 670px;
+    width: 675px;
   }
   .account2 .account-info {
     background: #319DB5;
@@ -13158,4 +13158,34 @@ body.rtl .layout-options .img-sidebar-right {
 }
 .rtl .sidebar-condensed.sidebar-hover:not(.sidebar-collapsed) .main-content {
   margin-right: 0;
+}
+
+
+/*
+botones
+*/
+
+.btn-success
+{
+  background: #5cb85c;
+  border-color: #4cae4c;
+  border-radius: 5px !important;
+}
+
+.btn-success:hover
+{
+  background: #54a854 !important;
+}
+
+.btn-primary
+{
+  background: #0284cb !important;
+  color:#FFF !important;
+  border-radius: 5px !important;
+}
+
+.btn-primary:hover
+{
+
+  background: #0276b7 !important;
 }
