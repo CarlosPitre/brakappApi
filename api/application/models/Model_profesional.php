@@ -212,7 +212,7 @@ class Model_profesional extends CI_Model {
 		return $query->result();
 	}
 
-	public function getProfesionalesBySectorDistancia($id,$lat,$lng)
+	public function getProfesionalesBySectorDistancia($id,$idMunicipio,$lat,$lng)
 	{
 		$query = $this->db->select("(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, ps.porcentaje")
 							->from('profesional p')
@@ -226,6 +226,88 @@ class Model_profesional extends CI_Model {
 							->get();
 		return $query->result();
 	}
+
+	public function getProfesionalesByServicioDistancia($idServicio,$idMunicipio,$lat,$lng)
+	{
+		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, ps.porcentaje,pf.descripcion as profesion')
+							->from('profesional p')
+							->join('profesionalservicio ps', 'ps.idProfesional = p.id','inner')
+							->join('servicio s', 's.id = ps.idServicio', 'inner')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('s.id', $idServicio)
+							->where('p.idMunicipio',$idMunicipio)
+							->having('distancia < 1')
+							->order_by('distancia', 'asc')
+							->get();
+		return $query->result();
+	}
+
+	public function getProfesionalesByMarcaDistancia($id,$idMunicipio,$lat,$lng)
+	{
+		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje,pf.descripcion as profesion')
+							->from('profesional p')
+							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
+							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('pp.idMarca', $id)
+							->where('p.idMunicipio',$idMunicipio)
+							->having('distancia < 1')
+							->order_by('distancia', 'asc')
+							->get();
+		return $query->result();
+	}
+
+	public function getProfesionalesByProductoDistancia($id,$idMunicipio,$lat,$lng)
+	{
+		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto,pf.descripcion as profesion')
+							->from('profesional p')
+							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
+							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('pp.idProducto', $id)
+							->where('p.idMunicipio',$idMunicipio)
+							->having('distancia < 1')
+							->order_by('distancia', 'asc')
+							->get();
+		return $query->result();
+	}
+
+	public function getProfesionalesByProductoMarcaDistancia($idProducto,$idMarca,$modelo,$idMunicipio,$lat,$lng)
+	{
+		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto,pf.descripcion as profesion')
+							->from('profesional p')
+							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
+							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('pp.idProducto', $idProducto)
+							->where('pp.idMarca', $idMarca)
+							->where('p.idMunicipio',$idMunicipio)
+							->like('pp.modelo',$modelo)
+							->having('distancia < 1')
+							->order_by('distancia', 'asc')
+							->get();
+		return $query->result();
+	}
+
+	public function getProfesionalesByProfesionDistancia($id,$idMunicipio,$lat,$lng)
+	{
+		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio,pf.descripcion as profesion')
+							->from('profesional p')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('p.idProfesion', $id)
+							->where('p.idMunicipio',$idMunicipio)
+							->having('distancia < 1')
+							->order_by('distancia', 'asc')
+							->get();
+		return $query->result();
+	}
+
+
 
 	public function getServicios($idProfesional)
 	{

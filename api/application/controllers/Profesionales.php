@@ -146,37 +146,38 @@ class Profesionales extends REST_Controller {
 		$tipo = $this->post("tipo");
 		$lat = $this->post("latitud");
 		$lgn = $this->post("longitud");
+		$idMunicipio = $this->post("idMunicipio");
 
 		switch ($tipo) {
 			case 'Sector':
 				$id = $this->post("idSector");
-				$profesionales = $this->model_profesional->getProfesionalesBySectorDistancia($id,$lat,$lgn);
+				$profesionales = $this->model_profesional->getProfesionalesBySectorDistancia($id,$idMunicipio,$lat,$lgn);
 				break;
 			case 'Marca':
 				$id = $this->post("idMarca");
-				$profesionales = $this->model_profesional->getProfesionalesByMarcaDistancia($id,$lat,$lgn);
+				$profesionales = $this->model_profesional->getProfesionalesByMarcaDistancia($id,$idMunicipio,$lat,$lgn);
 				break;
 			case 'Servicio':
 				$id = $this->post("idServicio");
-				$profesionales = $this->model_profesional->getProfesionalesByServicioDistancia($id,$lat,$lgn);
+				$profesionales = $this->model_profesional->getProfesionalesByServicioDistancia($id,$idMunicipio,$lat,$lgn);
 				break;
 			case 'Empresa':
 				$id = $this->post("idProfesional");
-				$profesionales = $this->model_profesional->getProfesionalesByProfesionalDistancia($id,$lat,$lgn);
+				$profesionales = $this->model_profesional->getProfesionalesByProfesionalDistancia($id,$idMunicipio,$lat,$lgn);
 				break;
 			case 'Producto':
 				$id = $this->post("idProducto");
-				$profesionales = $this->model_profesional->getProfesionalesByProductoDistancia($id,$lat,$lgn);
+				$profesionales = $this->model_profesional->getProfesionalesByProductoDistancia($id,$idMunicipio,$lat,$lgn);
 				break;
 			case 'Profesion':
 				$id = $this->post("idProfesion");
-				$profesionales = $this->model_profesional->getProfesionalesByProfesionDistancia($id,$lat,$lgn);		
+				$profesionales = $this->model_profesional->getProfesionalesByProfesionDistancia($id,$idMunicipio,$lat,$lgn);		
 				break;
 			case 'ProductoMarca':
 				$idProducto = $this->post("idProducto");
 				$idMarca = $this->post("idMarca");
 				$modelo = $this->post("modelo");
-				$profesionales = $this->model_profesional->getProfesionalesByProductoMarcaDistancia($idProducto,$idMarca,$modelo,$lat, $lgn);
+				$profesionales = $this->model_profesional->getProfesionalesByProductoMarcaDistancia($idProducto,$idMarca,$modelo,$idMunicipio,$lat, $lgn);
 				for ($i=0; $i < count($profesionales); $i++) {
 					$profesionales[$i]->imagenesProductos = $this->model_profesional->getImagenes($profesionales[$i]->idprofesionalproducto);
 				}
