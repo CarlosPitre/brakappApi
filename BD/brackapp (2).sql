@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 17-09-2016 a las 18:00:36
--- Versión del servidor: 10.1.13-MariaDB
--- Versión de PHP: 7.0.5
+-- Servidor: localhost
+-- Tiempo de generación: 18-10-2016 a las 16:25:31
+-- Versión del servidor: 10.1.16-MariaDB
+-- Versión de PHP: 7.0.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -49,18 +49,22 @@ CREATE TABLE `cliente` (
   `nombres` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `apellidos` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `correo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `direccion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
-  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL
+  `telefono` varchar(15) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `direccion` varchar(60) COLLATE utf8_spanish_ci DEFAULT NULL,
+  `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL,
+  `idFacebook` varchar(30) COLLATE utf8_spanish_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
 --
 -- Volcado de datos para la tabla `cliente`
 --
 
-INSERT INTO `cliente` (`id`, `nombres`, `apellidos`, `correo`, `telefono`, `direccion`, `estado`) VALUES
-(1, 'Carlos', 'Pitre', 'carlosjpitre@gmail.com', '3004706152', 'calle falsa 123', 'Activo'),
-(2, 'jeiner', 'mellado', 'j-e-i-n-e-r-m-e-l@hotmail.com', '9797978', 'calle123', 'Activo');
+INSERT INTO `cliente` (`id`, `nombres`, `apellidos`, `correo`, `telefono`, `direccion`, `estado`, `idFacebook`) VALUES
+(1, 'Carlos', 'Pitre', 'carlosjpitre@gmail.com', '3004706152', 'calle falsa 123', 'Activo', ''),
+(2, 'jeiner', 'mellado', 'j-e-i-n-e-r-m-e-l@hotmail.com', '9797978', 'calle123', 'Activo', ''),
+(3, 'Carlos', 'Pitre', 'carlsjulio@gmail.com', NULL, NULL, 'Activo', '10209962958849632'),
+(4, 'daniel', 'angarita', 'daniel@gmail.com', '3004706152', 'calle falsa 123', 'Activo', NULL),
+(5, 'prueba', 'PRUEBA', 'prueba@gmail.com', '300789765', 'prueba', 'Activo', NULL);
 
 -- --------------------------------------------------------
 
@@ -123,6 +127,14 @@ CREATE TABLE `imagenesprofesionalproducto` (
   `idProfesionalProducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+--
+-- Volcado de datos para la tabla `imagenesprofesionalproducto`
+--
+
+INSERT INTO `imagenesprofesionalproducto` (`id`, `imagen`, `idProfesionalProducto`) VALUES
+(1, '../api/img/prof-4-prod-35-0.png', 29),
+(2, '../api/img/prof-4-prod-35-1.jpg', 29);
+
 -- --------------------------------------------------------
 
 --
@@ -140,39 +152,7 @@ CREATE TABLE `marca` (
 --
 
 INSERT INTO `marca` (`id`, `descripcion`, `estado`) VALUES
-(1, 'michelin', 'Activo'),
-(2, 'LG', 'Activo'),
-(3, 'nike', 'Activo'),
-(4, 'nike', 'Activo'),
-(5, 'Nike', 'Activo'),
-(6, 'Acer', 'Activo'),
-(7, 'acer', 'Activo'),
-(8, 'diesel', 'Activo'),
-(9, 'diesel', 'Activo'),
-(10, 'sony', 'Activo'),
-(11, 'acer', 'Activo'),
-(12, 'iphone 42', 'Activo'),
-(13, 'iphone 5', 'Activo'),
-(14, 'iphone 4s', 'Activo'),
-(15, 'iphone 4s', 'Activo'),
-(16, 'iphone 5', 'Activo'),
-(17, 'sony Xperia Z8', 'Activo'),
-(18, 'Sony Xperia Z8', 'Activo'),
-(19, 'iphone 5', 'Activo'),
-(20, 'nokia', 'Activo'),
-(21, 'mac', 'Activo'),
-(22, 'moto g', 'Activo'),
-(23, 'moto g', 'Activo'),
-(24, 'iphone 4s', 'Activo'),
-(25, 'iphone 4', 'Activo'),
-(26, '10', 'Activo'),
-(27, 'iphone 5', 'Activo'),
-(28, 'sony xperia', 'Activo'),
-(29, 'Xperia z19', 'Activo'),
-(30, 'iphone 8s', 'Activo'),
-(31, 'eete3232', 'Activo'),
-(32, 'macbook', 'Activo'),
-(33, 'macbook', 'Activo');
+(34, 'nike', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -1399,40 +1379,7 @@ CREATE TABLE `producto` (
 --
 
 INSERT INTO `producto` (`id`, `descripcion`, `estado`) VALUES
-(1, 'Sin Producto', 'Inactivo'),
-(2, 'Estufa LG', 'Activo'),
-(3, 'zapatos', 'Activo'),
-(4, 'zapatos', 'Activo'),
-(5, 'Televisor Led 40"', 'Activo'),
-(6, 'zapatos', 'Activo'),
-(7, 'Computador', 'Activo'),
-(8, 'computador', 'Activo'),
-(9, 'sueter', 'Activo'),
-(10, 'sueter', 'Activo'),
-(11, 'celular', 'Activo'),
-(12, 'computador', 'Activo'),
-(13, 'celular', 'Activo'),
-(14, 'celular', 'Activo'),
-(15, 'celular', 'Activo'),
-(16, 'celular', 'Activo'),
-(17, 'celular', 'Activo'),
-(18, 'celular', 'Activo'),
-(19, 'celular', 'Activo'),
-(20, 'celular', 'Activo'),
-(21, 'celular', 'Activo'),
-(22, 'portatil', 'Activo'),
-(23, 'celular', 'Activo'),
-(24, 'celular', 'Activo'),
-(25, 'celular', 'Activo'),
-(26, 'celular', 'Activo'),
-(27, 'iphone 5', 'Activo'),
-(28, 'celular', 'Activo'),
-(29, 'celular', 'Activo'),
-(30, 'sony', 'Activo'),
-(31, 'celular', 'Activo'),
-(32, 'wewqer', 'Activo'),
-(33, 'pc', 'Activo'),
-(34, 'pc', 'Activo');
+(35, 'zapatos', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -1444,12 +1391,13 @@ CREATE TABLE `profesional` (
   `id` int(11) NOT NULL,
   `razonSocial` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `identificacion` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
+  `direccion` varchar(100) COLLATE utf8_spanish_ci NOT NULL,
   `latitud` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `longitud` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `foto` varchar(30) COLLATE utf8_spanish_ci NOT NULL,
   `correo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `telefono` varchar(15) COLLATE utf8_spanish_ci NOT NULL,
-  `profesion` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
+  `idProfesion` int(11) NOT NULL,
   `pago` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL,
   `experiencia` text COLLATE utf8_spanish_ci NOT NULL,
   `calificacion` float NOT NULL,
@@ -1462,10 +1410,11 @@ CREATE TABLE `profesional` (
 -- Volcado de datos para la tabla `profesional`
 --
 
-INSERT INTO `profesional` (`id`, `razonSocial`, `identificacion`, `latitud`, `longitud`, `foto`, `correo`, `telefono`, `profesion`, `pago`, `experiencia`, `calificacion`, `idMunicipio`, `estado`, `numeroPersonas`) VALUES
-(1, 'Luis Serge', '1065654572', '10.4820084', '-73.2750313', '../img/negro.jpg', 'editpt@gmail.com', '3004706152', 'Ingeniero de Sistemas', 'Activo', 'Desarrollador Brackapp', 2, 2, 'Activo', 2),
-(2, 'Brakapp', '123456789', '10.485067', '-73.2593197', '../img/arsenal.jpeg', 'brakapp@gmail.com', '89086543', 'Empresa', 'Activo', 'De Todo', 4.5, 19, 'Activo', 5),
-(3, 'FCardenas Ltda', '103289376', '', '', '', 'fcardenas@gmail.com', '3009474646', '', 'Activo', '', 0, 1096, 'Inactivo', 0);
+INSERT INTO `profesional` (`id`, `razonSocial`, `identificacion`, `direccion`, `latitud`, `longitud`, `foto`, `correo`, `telefono`, `idProfesion`, `pago`, `experiencia`, `calificacion`, `idMunicipio`, `estado`, `numeroPersonas`) VALUES
+(1, 'Luis Serge', '1065654572', '', '10.4820084', '-73.2750313', '../img/negro.jpg', 'editpt@gmail.com', '3004706152', 1, 'Activo', 'Desarrollador Brackapp', 2, 2, 'Activo', 2),
+(2, 'Brakapp', '123456789', '', '10.485067', '-73.2593197', '../img/arsenal.jpeg', 'brakapp@gmail.com', '89086543', 2, 'Activo', 'De Todo', 4.5, 19, 'Activo', 5),
+(3, 'FCardenas Ltda', '103289376', '', '', '', '', 'fcardenas@gmail.com', '3009474646', 1, 'Activo', '', 0, 1096, 'Inactivo', 0),
+(4, 'Carlos pitre', '1065654572', 'Calle 19b # 17-12, Valledupar - Cesar, Colombia', '10.4664201', '-73.2559295', '../api/img/Profesional-4.png', 'carlospitre@gmail.com', '3004706152', 1, 'Activo', 'Ninguna', 0, 458, 'Inactivo', 0);
 
 -- --------------------------------------------------------
 
@@ -1478,6 +1427,7 @@ CREATE TABLE `profesionalproducto` (
   `idProfesional` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
   `idMarca` int(11) NOT NULL,
+  `modelo` varchar(60) COLLATE utf8_spanish_ci NOT NULL,
   `porcentaje` int(11) NOT NULL,
   `estatus` enum('Disponible','Agotado') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Disponible',
   `estado` enum('Activo','Inactivo') COLLATE utf8_spanish_ci NOT NULL DEFAULT 'Activo'
@@ -1487,10 +1437,8 @@ CREATE TABLE `profesionalproducto` (
 -- Volcado de datos para la tabla `profesionalproducto`
 --
 
-INSERT INTO `profesionalproducto` (`id`, `idProfesional`, `idProducto`, `idMarca`, `porcentaje`, `estatus`, `estado`) VALUES
-(26, 2, 29, 28, 6, 'Disponible', 'Activo'),
-(27, 2, 30, 29, 21, 'Disponible', 'Activo'),
-(28, 2, 31, 30, 0, 'Disponible', 'Activo');
+INSERT INTO `profesionalproducto` (`id`, `idProfesional`, `idProducto`, `idMarca`, `modelo`, `porcentaje`, `estatus`, `estado`) VALUES
+(29, 4, 35, 34, 'air', 90, 'Disponible', 'Activo');
 
 -- --------------------------------------------------------
 
@@ -1505,13 +1453,24 @@ CREATE TABLE `profesionalservicio` (
   `porcentaje` float NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `profesionalservicio`
+-- Estructura de tabla para la tabla `profesiones`
 --
 
-INSERT INTO `profesionalservicio` (`id`, `idProfesional`, `idServicio`, `porcentaje`) VALUES
-(25, 2, 25, 9),
-(28, 2, 28, 0);
+CREATE TABLE `profesiones` (
+  `id` int(11) NOT NULL,
+  `descripcion` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `profesiones`
+--
+
+INSERT INTO `profesiones` (`id`, `descripcion`) VALUES
+(1, 'Ingeniero de Sistemas'),
+(2, 'Mecanico');
 
 -- --------------------------------------------------------
 
@@ -1532,7 +1491,8 @@ INSERT INTO `respuestas` (`id`, `nombre`) VALUES
 (1, 'ocupado'),
 (2, 'voy en 15 '),
 (3, 'llamame'),
-(4, 'estoy disponible ya mismo');
+(4, 'estoy disponible ya mismo'),
+(5, 'Ya voy');
 
 -- --------------------------------------------------------
 
@@ -1554,7 +1514,8 @@ INSERT INTO `sector` (`id`, `descripcion`, `estado`) VALUES
 (1, 'Sistemas', 'Activo'),
 (2, 'Electricidad', 'Activo'),
 (3, 'Plomeria', 'Activo'),
-(4, 'Salud', 'Activo');
+(4, 'Salud', 'Activo'),
+(5, 'otros', 'Inactivo');
 
 -- --------------------------------------------------------
 
@@ -1567,14 +1528,6 @@ CREATE TABLE `sectorservicio` (
   `idSector` int(11) NOT NULL,
   `idServicio` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
-
---
--- Volcado de datos para la tabla `sectorservicio`
---
-
-INSERT INTO `sectorservicio` (`id`, `idSector`, `idServicio`) VALUES
-(1, 1, 1),
-(2, 1, 2);
 
 -- --------------------------------------------------------
 
@@ -1594,26 +1547,7 @@ CREATE TABLE `servicio` (
 --
 
 INSERT INTO `servicio` (`id`, `descripcion`, `estado`, `idSector`) VALUES
-(1, 'Mantenimiento de Computadores', 'Activo', 0),
-(2, 'Pulidora', 'Activo', 0),
-(3, 'analista', 'Activo', 1),
-(4, 'asesor', 'Activo', 2),
-(15, 'Reparacion De Computadores', 'Activo', 1),
-(16, 'soldador', 'Activo', 2),
-(17, 'analista', 'Activo', 1),
-(18, 'analista', 'Activo', 1),
-(19, 'soldador', 'Activo', 2),
-(20, 'soldador', 'Activo', 2),
-(21, 'soldador', 'Activo', 2),
-(22, 'analista', 'Activo', 1),
-(23, 'soldador', 'Activo', 2),
-(24, 'soldador', 'Activo', 2),
-(25, 'analista', 'Activo', 1),
-(26, 'soldador', 'Activo', 2),
-(27, 'mantenimiento de computadores', 'Activo', 1),
-(28, 'soldador', 'Activo', 2),
-(29, 'analista', 'Activo', 1),
-(30, 'mantenimiento', 'Activo', 1);
+(1, 'Sin Servicio', 'Inactivo', 1);
 
 -- --------------------------------------------------------
 
@@ -1623,13 +1557,21 @@ INSERT INTO `servicio` (`id`, `descripcion`, `estado`, `idSector`) VALUES
 
 CREATE TABLE `solicitud` (
   `id` int(11) NOT NULL,
-  `fecha` datetime NOT NULL ,
+  `fecha` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `idCliente` int(11) NOT NULL,
   `idProfesional` int(11) NOT NULL,
   `idProducto` int(11) DEFAULT NULL,
   `idServicio` int(11) DEFAULT NULL,
   `idRespuesta` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `solicitud`
+--
+
+INSERT INTO `solicitud` (`id`, `fecha`, `idCliente`, `idProfesional`, `idProducto`, `idServicio`, `idRespuesta`) VALUES
+(1, '0000-00-00 00:00:00', 1, 4, 35, 1, 0),
+(2, '2016-10-05 17:20:28', 1, 4, 35, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -1671,11 +1613,15 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `usuario`, `password`, `idPerfil`, `idCliente`, `idProfesional`, `idAdmin`) VALUES
-(1, 'user', '12dea96fec20593566ab75692c9949596833adc9', 2, 1, 0, 0),
+(1, 'user', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 2, 1, 0, 0),
 (2, 'brackapp', '8cb2237d0679ca88db6464eac60da96345513964', 3, 0, 1, 0),
 (3, 'root', '8cb2237d0679ca88db6464eac60da96345513964', 3, 0, 2, 0),
 (4, 'fcardenas', 'f7c3bc1d808e04732adf679965ccc34ca7ae3441', 3, 0, 3, 0),
-(5, 'admin', '348162101fc6f7e624681b7400b085eeac6df7bd', 1, 0, 0, 1);
+(5, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 1, 0, 0, 1),
+(6, 'carlospitre', '7110eda4d09e062aa5e4a390b0a572ac0d2c0220', 3, 0, 4, 0),
+(7, 'carlsjulio@gmail.com', 'b4310bf13d029dc4d32a1e169f224535a7474fb2', 2, 3, 0, 0),
+(8, 'daniel@gmail.com', '7cd078a2091f2775fa62928f23d17d33317fb474', 2, 4, 0, 0),
+(9, 'prueba@gmail.com', '91c031127a6d5333c512da3bf3c1a9eb54300ec4', 2, 5, 0, 0);
 
 --
 -- Índices para tablas volcadas
@@ -1762,6 +1708,12 @@ ALTER TABLE `profesionalservicio`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indices de la tabla `profesiones`
+--
+ALTER TABLE `profesiones`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indices de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
@@ -1816,7 +1768,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `departamento`
 --
@@ -1826,12 +1778,12 @@ ALTER TABLE `departamento`
 -- AUTO_INCREMENT de la tabla `imagenesprofesionalproducto`
 --
 ALTER TABLE `imagenesprofesionalproducto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `marca`
 --
 ALTER TABLE `marca`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 --
 -- AUTO_INCREMENT de la tabla `menu`
 --
@@ -1856,47 +1808,52 @@ ALTER TABLE `perfil`
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 --
 -- AUTO_INCREMENT de la tabla `profesional`
 --
 ALTER TABLE `profesional`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `profesionalproducto`
 --
 ALTER TABLE `profesionalproducto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT de la tabla `profesionalservicio`
 --
 ALTER TABLE `profesionalservicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `profesiones`
+--
+ALTER TABLE `profesiones`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `respuestas`
 --
 ALTER TABLE `respuestas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `sector`
 --
 ALTER TABLE `sector`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `sectorservicio`
 --
 ALTER TABLE `sectorservicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `servicio`
 --
 ALTER TABLE `servicio`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `solicitud`
 --
 ALTER TABLE `solicitud`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `tiposservicios`
 --
@@ -1906,7 +1863,7 @@ ALTER TABLE `tiposservicios`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
