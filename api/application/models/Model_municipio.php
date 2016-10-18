@@ -21,7 +21,8 @@ class Model_municipio extends CI_Model {
 		}else{
 			$query = $this->db->select('m.*')
 				->from('municipio m')						
-				->join('profesional p', 'm.id = p.idMunicipio', 'inner')			
+				->join('profesional p', 'm.id = p.idMunicipio', 'inner')
+				->group_by('m.id')			
 				->get();
 		}
 		return $query->result();

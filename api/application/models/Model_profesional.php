@@ -84,6 +84,19 @@ class Model_profesional extends CI_Model {
 		return $query->result();
 	}
 
+	public function getProfesionalesByProfesionales($id,$idMunicipio)
+	{
+		$query = $this->db->select('p.*, m.nombre as municipio,pf.descripcion as profesion')
+							->from('profesional p')
+							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
+							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
+							->where('p.id', $id)
+							->where('p.idMunicipio',$idMunicipio)
+							->order_by('p.calificacion', 'desc')
+							->get();
+		return $query->result();
+	}
+
 	public function getProfesionalesByServicio($idServicio,$idMunicipio)
 	{
 		$query = $this->db->select('p.*, m.nombre as municipio, ps.porcentaje,pf.descripcion as profesion')

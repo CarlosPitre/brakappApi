@@ -56,7 +56,7 @@
           </select>
         </div>       
         <div class="col-md-2">
-          <a href="javascript:;" title="Compartir" class="btn btn-primary btn-custom btn-serch btn-block" data-toggle="popover" data-placement="bottom" target="_self" style="width: 100%">Compartir</a>
+          <a href="javascript:;" title="Compartir" class="btn btn-success btn-custom  btn-block" data-toggle="popover" data-placement="bottom" target="_self" style="width: 100%">Compartir</a>
         </div>
     </div>
     <br>
@@ -71,7 +71,7 @@
                     <div class="col-md-3">
                       <img src="{{profesional.foto}}" alt="" style="width:140px;height:140px;">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4" style="text-align: left; border-right: thin solid #e0e0e0;">
                       <h2><strong style="color:#464646;">{{profesional.razonSocial}}</strong></h2>
                       
                       <div ng-init="x = profesional.calificacion">
@@ -80,7 +80,7 @@
                       <p>{{profesional.municipio}}</p>
                       <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2" style="height:145px ;border-right: thin solid #e0e0e0;">
                       <div class="t-center">
                         <h4 style="text-align:center;color: #008DD4">Porcentaje de Descuento</h4>
                         <h1 style="color : #FB135C;">{{profesional.porcentaje}} %</h1>
@@ -215,7 +215,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Registro & Login</h4>
+            <h4 class="modal-title">Acceder a Brakapp</h4>
         </div>
         <div class="modal-body">
           <ul class="nav nav-tabs nav-justified">
@@ -223,75 +223,84 @@
             <li><a data-toggle="tab" href="#registrarse"  target="_self">Registrarse</a></li>
             <li><a data-toggle="tab" href="#contraseña" target="_self">Olvide Contraseña?</a></li>
           </ul>
-          <center>
-            <img src="./img/logo.png" alt="" style="width: 150px;height: 150px;">
-          </center>
+
           <div class="tab-content">
             <div id="login" class="tab-pane fade in active">
               
               <div class="row">
+                <br>
                 <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
-                  <label for="field-1" class="control-label">Usuario</label>
-                  <input type="text" class="form-control" id="field-1" ng-model="Cliente.user">
+                  <input type="text" class="form-control ctinput" placeholder="Usuario" id="field-1" ng-model="Cliente.user">
                 </div>
               </div>
               <div class="row">
                  <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
-                  <label for="field-1" class="control-label">Contraseña</label>
-                  <input type="password" class="form-control" id="field-1" ng-model="Cliente.pass">
+
+                  <input type="password" class="form-control ctinput" placeholder="Contraseña" id="field-1" ng-model="Cliente.pass">
                 </div>
               </div>
               <div class="row">
-                <div class="col-md-6 col-md-offset-3">
-                  <button type="button" class="btn btn-primary btn-custom btn-serch" style="width: 100%;margin-bottom: 6px" ng-click="iniciarSesion()">Iniciar Sesión</button>
-                  <button type="button" id="facebookLogin" class="btn btn-primary" style="width: 100%">Iniciar Sesión Con Facebook</button>
+                <div class="col-md-12 ">
+                  <button type="button" class="btn btn-success" ng-click="iniciarSesion()">Iniciar Sesión</button>
+                  <button type="button" id="facebookLogin" class="btn btn-primary" >Iniciar Sesión Con Facebook</button>
                 </div>                
               </div> 
              
             </div>
             <!-- Tab Registrarse  -->
             <div id="registrarse" class="tab-pane fade">            
-              <div class="row">
+              <div class="" style="padding:5px;" class="registerbox">
                 <div class="">
                   <div class="row">
-                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
-                      <label for="field-1" class="control-label">Nombres</label>
-                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.nombres">
+                    <div class="form-group col-md-6" style="text-align: left;">
+
+                      <input type="text" class="form-control ctinput" id="field-1" placeholder="Nombre" ng-model="Cliente.nombres">
+                    </div>
+
+                    <div class="form-group col-md-6" style="text-align: left;">
+
+                      <input type="text" class="form-control ctinput"  id="field-1" placeholder="Apellidos" ng-model="Cliente.apellidos">
                     </div>
                   </div>
                   <div class="row">
-                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
-                      <label for="field-1" class="control-label">Apellidos</label>
-                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.apellidos">
+                    <div class="form-group col-md-6 " style="text-align: left;">
+
+                      <input type="text" class="form-control ctinput" id="field-1" placeholder="Dirección" ng-model="Cliente.direccion">
+                    </div>
+
+                    <div class="form-group col-md-6 " style="text-align: left;">
+
+                      <input type="text" class="form-control ctinput" id="field-1" placeholder="Teléfono" ng-model="Cliente.telefono">
                     </div>
                   </div>
                   <div class="row">
-                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
-                      <label for="field-1" class="control-label">Dirección</label>
-                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.direccion">
+                    <div class="form-group col-md-6 " style="text-align: left;">
+
+                      <input type="text" class="form-control ctinput" id="field-1" placeholder="Correo" ng-model="Cliente.correo">
+                    </div>
+
+                    <div class="form-group col-md-6 " style="text-align: left;">
+
+                      <input type="text" class="form-control ctinput" id="field-1" placeholder="Contraseña" ng-model="Cliente.password">
                     </div>
                   </div>
                   <div class="row">
-                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
-                      <label for="field-1" class="control-label">Teléfono</label>
-                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.telefono">
-                    </div>
+
+                  <div class="col-md-12 ">
+
+                    <button type="button" id="facebookLogin" class="btn btn-primary pull-right"  >Registrarse Con Facebook</button>
+                    &nbsp;
+                    <button type="button" class="btn btn-success pull-right" style="margin-right:5px;" ng-click="registrar()">Registrarse</button>
                   </div>
-                  <div class="row">
-                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
-                      <label for="field-1" class="control-label">Correo</label>
-                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.correo">
-                    </div>
-                  </div>                 
-                  <div class="row">
-                    <div class="form-group col-md-6 col-md-offset-3" style="text-align: left;">
-                      <label for="field-1" class="control-label">Contraseña</label>
-                      <input type="text" class="form-control" id="field-1" ng-model="Cliente.password">
-                    </div>
                   </div>
-                  <div class="col-md-6 col-md-offset-3">
-                    <button type="button" class="btn btn-primary btn-custom btn-serch" style="width: 100%;margin-bottom: 6px" ng-click="registrar()">Registrarse</button>
-                    <button type="button" id="facebookLogin" class="btn btn-primary" style="width: 100%">Registrarse Con Facebook</button>
+
+                  <div class="row">
+                    <div class="col-md-10 col-md-push-1" style="margin-top:5px;">
+                      <span class="terminos">
+                        Al crear una cuenta, acepta las <a href="#">Condiciones legales</a>, <a href="#"> Reglamento de Prestación de Servicios</a> y <a
+                              href="#">la Política de privacidad</a> de Brakapp.
+                      </span>
+                    </div>
                   </div>
                   
                 </div>                

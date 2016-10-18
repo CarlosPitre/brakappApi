@@ -296,3 +296,23 @@ nav {
     text-align: center;
     color:#FFF;
 }
+
+.registerbox
+{
+    padding:5px;
+}
+
+label.control-label
+{
+    font-weight: normal !important;
+}
+
+.ctinput
+{
+    border-radius: 0px !important;
+}
+
+.terminos
+{
+    font-size: .8em;
+}
