@@ -229,7 +229,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByServicioDistancia($idServicio,$idMunicipio,$lat,$lng)
 	{
-		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, ps.porcentaje,pf.descripcion as profesion')
+		$query = $this->db->select("(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, ps.porcentaje,pf.descripcion as profesion")
 							->from('profesional p')
 							->join('profesionalservicio ps', 'ps.idProfesional = p.id','inner')
 							->join('servicio s', 's.id = ps.idServicio', 'inner')
@@ -245,7 +245,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByMarcaDistancia($id,$idMunicipio,$lat,$lng)
 	{
-		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje,pf.descripcion as profesion')
+		$query = $this->db->select("(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje,pf.descripcion as profesion")
 							->from('profesional p')
 							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
 							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
@@ -261,7 +261,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByProductoDistancia($id,$idMunicipio,$lat,$lng)
 	{
-		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto,pf.descripcion as profesion')
+		$query = $this->db->select("(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto,pf.descripcion as profesion")
 							->from('profesional p')
 							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
 							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
@@ -277,7 +277,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByProductoMarcaDistancia($idProducto,$idMarca,$modelo,$idMunicipio,$lat,$lng)
 	{
-		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto,pf.descripcion as profesion')
+		$query = $this->db->select("(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio, pp.porcentaje, pp.id as idprofesionalproducto,pf.descripcion as profesion")
 							->from('profesional p')
 							->join('profesionalproducto pp', 'pp.idProfesional = p.id','inner')
 							->join('producto pr', 'pr.id = pp.idProducto', 'inner')
@@ -295,7 +295,7 @@ class Model_profesional extends CI_Model {
 
 	public function getProfesionalesByProfesionDistancia($id,$idMunicipio,$lat,$lng)
 	{
-		$query = $this->db->select('(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio,pf.descripcion as profesion')
+		$query = $this->db->select("(6371 * ACOS( SIN(RADIANS(p.latitud)) * SIN(RADIANS('$lat')) + COS(RADIANS(p.longitud - '$lng')) * COS(RADIANS(p.latitud)) * COS(RADIANS('$lat')))) AS distancia,p.*, m.nombre as municipio,pf.descripcion as profesion")
 							->from('profesional p')
 							->join('profesiones pf','pf.id = p.idProfesion', 'inner')
 							->join('municipio m', 'm.id = p.idMunicipio', 'inner')
