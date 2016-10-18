@@ -5,7 +5,7 @@
 }
 .imglogo
 {
-    width: 140px;
+    width: 190px;
     margin-top: 50px;
 }
 
@@ -25,9 +25,14 @@
 
 .footer{
   width: 100%;
-  margin-top: 52px !important;
 
+}
 
+.foot
+{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #313131 !important;
 }
 .contaner{
   border: thin solid #000;
@@ -35,14 +40,14 @@
 }
 body
 {
-  background: #df2e5e;
+  background: #df2e5e !important;
 }
 
 .mp{
   margin: 0 !important;
   background: #df2e5e;
   /*padding-top: 11.6% !important;*/
-  padding-top: 80px !important;
+  padding-top: 60px !important;
 
 }
 .dkp
@@ -97,6 +102,7 @@ body
 
 .cntp
 {
+  width: 100%;
     background: #FFF;
 }
 
@@ -104,24 +110,29 @@ body
 /*navbar*/
 .navbar-default 
 {
-  background: #363636;  
+  background: none !important;
+  border-bottom: thin solid #F2F2F2;  
+  -webkit-box-shadow:0px 1px 1px #E3E3E3;
+ -moz-box-shadow:0px 1px 1px #E3E3E3;
+ box-shadow:0px 1px 1px #E3E3E3;
 }
 
 .navbar-default .navbar-nav > li > a
 {
-  color:#FFF;
+  color:#333;
 }
 
 .navbar-default .navbar-nav > li > a:hover
 {
   /*border: 1px solid #FB135C;*/
-  color: #FB135C;
+  color: #FB135C !important;
   border:0;
+  text-decoration: underline;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus
 {
-  color: #262626;
-  background:  #FB135C
+  color: #FB135C !important;
+  background:  none !important;
 }
 
 .navbar-default .navbar-nav > .active > a:hover

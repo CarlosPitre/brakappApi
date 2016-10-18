@@ -1,24 +1,41 @@
+<style>
+  body
+  {
+    background: #FFF !important;
+  }
+</style>
 
-<div class="row">
-  <div class="col-xs-6 col-sm-6 col-md-7">
-      <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control hcustom40" matchclass="highlight" />
-  </div> 
-  <div class="col-xs-6 col-sm-3 col-md-3">
+<!-- inciio busqueda-->
 
-      <select class="form-control hcustom40" ng-model= "idMunicipio">
-          <option value="0" selected>Seleccionar Una Ciudad</option>
-          <option value="{{municipio.id}}" ng-repeat="municipio in Municipios">{{municipio.nombre}}</option>
-      </select>
-  </div>      
-  <div class="col-xs-12 col-sm-2 col-md-2">
-      <button class="btn btn-success btn-custom hcustom40 btn-serch" ng-click="Buscar(selectedServicio.originalObject)"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Buscar </button>
+
+<!-- fin busqueda-->
+
+<div class="col-md-10 col-md-push-1" style="margin-bottom: 10px;">
+  <div class="col-md-2">
+    <img src="img/logobrakapp2.png"  style="width: 120px !important;margin: 0 !important;" alt="">
   </div>
+  <div class="col-xs-6 col-sm-6 col-md-5">
+          <angucomplete ng-model="busca" id="ex2" placeholder="Ejem: Plomeria, Mantenimiento de Computadores, etc..." pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control hcustom40" matchclass="highlight" />
+      </div> 
+      <div class="col-xs-6 col-sm-3 col-md-3">
+
+          <select class="form-control hcustom40" ng-model= "idMunicipio">
+              <option value="0" selected>Seleccionar Una Ciudad</option>
+              <option value="{{municipio.id}}" ng-repeat="municipio in Municipios">{{municipio.nombre}}</option>
+          </select>
+      </div>      
+      <div class="col-xs-12 col-sm-2 col-md-2">
+          <button class="btn btn-success btn-custom hcustom40 btn-serch" ng-click="Buscar(selectedServicio.originalObject)"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Buscar </button>
+      </div>
 </div>
+
+<div class="col-md-10 col-md-push-1">
+  
 
 <div class="wrap-search">
     <div class="row">
       <div class="col-md-2">
-          <button type="button" class="btn btn-primary btn-custom btn-serch"  ng-click="Mapa()" >{{title}}</button>
+          <button type="button" class="btn btn-primary btn-custom btn-serch btn-large"  ng-click="Mapa()" >{{title}}</button>
         </div>
         <div class="col-md-4">
           <div class="append-icon">
@@ -38,9 +55,9 @@
     </div>
     <br>
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12" >
         <div ng-show="open" style="color:black">
-          <div ng-repeat="profesional in Profesionales | filter : filter">
+          <div ng-repeat="profesional in Profesionales | filter : filter" style="margin: 10px 30px !important;">
             <div class="row">
               <div class="panel col-md-12">
                 <div class="panel-content">
@@ -52,7 +69,7 @@
                       <h2><strong>{{profesional.razonSocial}}</strong></h2>
                       
                       <div ng-init="x = profesional.calificacion">
-                        <span uib-rating ng-model="x" max="5" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'" read-only="true" aria-labelledby="custom-icons-1"></span> <b>(<i>Calificación:</i> {{x}})</b>
+                        <span uib-rating ng-model="x" max="5" state-on="'glyphicon-ok-sign'" state-off="'glyphicon-ok-circle'" read-only="true" aria-labelledby="custom-icons-1" style="color:#00E01D"></span> <b>(<i>Calificación:</i> {{x}})</b>
                       </div>
                       <p><strong>{{profesional.municipio}}</strong></p>
                       <p>Personas que lo han calificado: <strong>{{profesional.numeroPersonas}}</strong></p>
@@ -143,6 +160,8 @@
       </div>
     </div>
 </div>
+</div>
+
 
 <!-- Modal Fotos -->
 <div class="container">
