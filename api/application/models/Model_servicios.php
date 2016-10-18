@@ -55,7 +55,7 @@ class Model_servicios extends CI_Model {
 		$query=$this->db
 				->select('id, razonSocial')
 				->from('profesional')
-				->where('estado', 'Activo')
+				->where('estado','Activo')
 				->where('pago', 'Activo')
 				->get();
 		return $query->result();
