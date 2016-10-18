@@ -6810,7 +6810,7 @@ body:not(.fixed-topbar) .main-content .page-content {
   margin-bottom: 20px;
   margin-top: 0;
   text-align: center;
-  text-transform: uppercase;
+
 }
 .account2 .form-signin h3 strong {
   font-family: 'Lato', arial, sans-serif;
