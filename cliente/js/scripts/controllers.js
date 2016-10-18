@@ -51,10 +51,15 @@ app.controller('SearchCtrl',function ($scope,menuService) {
     });
   }
   $scope.Buscar = function (json) {
-    json.idMunicipio = $scope.idMunicipio;
-    sessionStorage.setItem('json', JSON.stringify(json));
-    console.log(JSON.stringify(json));
-    window.location.href = "#/servicio/profesionales";
+    if ($scope.idMunicipio == '0') {
+      alert("Por favor ingresa una ciudad.")
+    }else{
+      json.idMunicipio = $scope.idMunicipio;
+      sessionStorage.setItem('json', JSON.stringify(json));
+      console.log(JSON.stringify(json));
+      window.location.href = "#/servicio/profesionales";
+    };
+    
   }
 })
 
@@ -203,7 +208,7 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
     $scope.Profesional = profesional
     if ($scope.Profesional.status == false) {
       $scope.Profesional.status = true;
-      $scope.Profesional.button = "Ver Menos";
+      $scope.Profesional.button = "Ocultar";
       if ($scope.Profesional.mapa == false) {
         $scope.Profesional.mapa = true;
         initMap($scope.Profesional.id);
