@@ -141,3 +141,37 @@ body
   text-decoration: underline;
 
 }
+
+@media (max-width: 767px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+
+  .inputm
+  {
+    margin-top: 10px;
+  }
+
+  .icons
+  {
+    margin-top: 90px !important;
+  }
+
+  .imgm
+  {
+    width: 130px !important;
+  }
+
+  
+}
+
+@media (max-width: 390px) {
+  .imgm
+  {
+    width: 100px !important;
+  }
+}
+

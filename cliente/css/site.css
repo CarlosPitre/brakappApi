@@ -134,14 +134,17 @@ nav {
   font-weight: bold !important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 767px) {
   .masthead-brand {
     float: left;
   }
   .masthead-nav {
     float: right;
   }
+
 }
+
+
 
 
 /*

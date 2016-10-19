@@ -24,17 +24,18 @@
                 
                 <div class="col-md-8 col-md-push-2 wrap-search" >
                     <div class="row">
-                        <div class="col-xs-12 col-sm-6 col-md-7">
+                        <div class="col-xs-12 col-sm-6 col-md-7 ">
                             <angucomplete ng-model="busca" id="ex2" placeholder="Servicios, personas y productos" pause="300"  localdata="Servicio" selectedobject="selectedServicio" searchfields="descripcion" titlefield="descripcion" descriptionfield="tipo" minlength="1" inputclass="form-control hcustom40" matchclass="highlight" />
                         </div> 
-                        <div class="col-xs-12 col-sm-3 col-md-3">
-                            <select class="form-control hcustom40" ng-model= "idMunicipio">
+
+                        <div class="col-xs-12 col-sm-3 col-md-3" >
+                            <select class="form-control hcustom40 inputm" ng-model= "idMunicipio">
                                 <option value="0" selected>Ciudad</option>
                                 <option value="{{municipio.id}}" ng-repeat="municipio in Municipios">{{municipio.nombre}}</option>
                             </select>
                         </div>      
                         <div class="col-xs-12 col-sm-2 col-md-2">
-                            <button class="btn btn-success btn-custom hcustom40 btn-serch" ng-click="Buscar(selectedServicio.originalObject)"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Buscar </button>
+                            <button class="btn btn-primary btn-custom  btn-block" ng-click="Buscar(selectedServicio.originalObject)"><i class="glyphicon glyphicon-search"></i>&nbsp;&nbsp;Buscar </button>
                         </div>
                     </div>
                 </div>
@@ -42,18 +43,18 @@
             </div>
             </div>
 </div>
-<div class="container-fluid mp">
+<div class="container-fluid mp icons">
 <div class="row">
-      <div class="col-md-8 col-sm-8 col-md-push-2 col-sm-push-2">
+      <div class="col-xs-12 col-md-8 col-sm-8 col-md-push-2 col-sm-push-2">
       <div class="row">
-        <div class="col-md-4 col-sm-4 imgcol">
-          <img src="img/img1.png" alt="" width="160px">
+        <div class="col-xs-4 col-md-4 col-sm-4 imgcol">
+          <img src="img/img1.png" alt="" width="160px" class="imgm">
         </div>
-        <div class="col-md-4 col-sm-4 imgcol" >
-          <img src="img/img2.png" alt="" width="160px">
+        <div class=" col-xs-4 col-md-4 col-sm-4 imgcol" >
+          <img src="img/img2.png" alt="" width="160px" class="imgm">
         </div>
-        <div class="col-md-4 col-sm-4 imgcol">
-          <img src="img/img3.png" alt="" width="160px">
+        <div class="col-xs-4 col-md-4 col-sm-4 imgcol">
+          <img src="img/img3.png" alt="" width="160px" class="imgm">
         </div>
       </div>
       </div>
