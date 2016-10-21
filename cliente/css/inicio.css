@@ -173,5 +173,23 @@ body
   {
     width: 100px !important;
   }
+
+  .mgscreen
+  {
+    margin-bottom: 10px !important;
+  }
+  .wrap-search
+  {
+    margin-top: 10px;
+  }
 }
+
+@media(max-height: 768px )
+{
+  .footer{
+    position: inherit !important;
+    bottom: 0;
+  }
+}
+
 
