@@ -334,9 +334,10 @@ class Model_profesional extends CI_Model {
 
 	public function getProductos($idProfesional)
 	{
-		$query = $this->db->select('p.*')
-			->from('producto p')
-			->join('profesionalproducto pp', 'pp.idProducto = p.id','inner')
+		$query = $this->db->select('pp.*,p.descripcion as producto, m.descripcion as marca')
+			->from('profesionalproducto pp')
+			->join('producto p', 'pp.idProducto = p.id','inner')
+			->join('marca m', 'pp.idMarca = m.id','inner')
 			->where('pp.idProfesional', $idProfesional)
 			->get();
 		return $query->result();

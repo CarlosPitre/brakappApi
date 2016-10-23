@@ -123,7 +123,11 @@ class Profesionales extends REST_Controller {
 			$servicios = $this->model_profesional->getServicios($profesionales[$i]->id);
 			$profesionales[$i]->servicios = $servicios;
 			$productos = $this->model_profesional->getProductos($profesionales[$i]->id);
+			for ($p=0; $p < count($productos); $p++) { 
+			$productos[$p]->imagenes = $this->model_profesional->getImagenes($productos[$p]->id);
+			}
 			$profesionales[$i]->productos = $productos;
+			$profesionales[$i]->open = FALSE;
 		}
 
 		if ($profesionales) {
@@ -195,6 +199,7 @@ class Profesionales extends REST_Controller {
 			$profesionales[$i]->servicios = $servicios;
 			$productos = $this->model_profesional->getProductos($profesionales[$i]->id);
 			$profesionales[$i]->productos = $productos;
+			$profesionales[$i]->open = FALSE;
 		}
 
 		if ($profesionales) {
@@ -254,6 +259,7 @@ class Profesionales extends REST_Controller {
 			$profesionales[$i]->servicios = $servicios;
 			$productos = $this->model_profesional->getProductos($profesionales[$i]->id);
 			$profesionales[$i]->productos = $productos;
+			$profesionales[$i]->open = FALSE;
 		}
 
 		if ($profesionales) {

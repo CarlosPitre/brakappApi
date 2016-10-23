@@ -87,16 +87,18 @@
                       <div class="t-center">
                         <h4 style="text-align:center;color: #008DD4">Porcentaje de Descuento</h4>
                         <h1 style="color : #FB135C;">{{profesional.porcentaje}} %</h1>
+                        
                       </div>
                     </div>
                     <div class="col-md-3">
-                       <div  style="margin-top: 80px;">
-                          <div class="font-animation mgscreen">
-                              <button class="btn btn-primary btn-custom btn-serch btn-lg" ng-click="Detalles(profesional)" style="width: 100%">                            
-                               {{profesional.button}}
-                              </button>
-                            </div>
-                        </div>
+                      <div class="row" style="margin-top: 45px;">
+                        <a href="http://{{profesional.url}}">{{profesional.url}}</a>
+                      </div>
+                      <div class="row" style="margin-top: 35px;">                        
+                        <button class="btn btn-primary btn-custom btn-serch btn-lg" ng-click="Detalles(profesional)" style="width: 100%">                       
+                         {{profesional.button}}
+                        </button>                          
+                      </div>
                     </div>
                   </div>                
                 </div>
@@ -108,48 +110,78 @@
                   <div class="row">
                     <div class="col-md-6">
                       <div class="table-responsive">
+                        <h4>Información Básica</h4>
                         <table class="table">
                           <tr>
                             <td style="text-align: left;">Correo:</td>
-                            <td style="text-align: left;"><strong>{{Profesional.correo}}</strong></td>
+                            <td style="text-align: left;"><strong>{{profesional.correo}}</strong></td>
                           </tr>
                           <tr>
                             <td style="text-align: left;">Teléfono:</td>
-                            <td style="text-align: left;"><strong>{{Profesional.telefono}}</strong></td>
+                            <td style="text-align: left;"><strong>{{profesional.telefono}}</strong></td>
                           </tr>
                           <tr>
                             <td style="text-align: left;">Dirección:</td>
-                            <td style="text-align: left;"><strong>{{Profesional.direccion}}</strong></td>
+                            <td style="text-align: left;"><strong>{{profesional.direccion}}</strong></td>
                           </tr>
                           <tr>
                             <td style="text-align: left;">
                               Profesión
                             </td>
-                            <td style="text-align: left;"><strong>{{Profesional.profesion}}</strong></td>
+                            <td style="text-align: left;"><strong>{{profesional.profesion}}</strong></td>
                           </tr>
                           <tr>
                             <td style="text-align: left;">
                               Experiencia Laboral:
                             </td>
                             <td style="text-align: left;">
-                              <strong>{{Profesional.experiencia}}</strong>
+                              <strong>{{profesional.experiencia}}</strong>
                             </td>
                           </tr>
                         </table>
                       </div>
                       <div class="row">
+                        <a href="javascript:;" class="btn btn-link" ng-click="profesional.open = true" style="font-size: 16px;">Servicios o Productos</a>
                         <div class="col-md-8 col-md-offset-2">
                           <button class="btn btn-primary btn-custom btn-serch" ng-click="Solicitar(profesional)" style="width: 100%; margin-bottom: 7px;">
                             Contactar
                           </button>
                           <button class="btn btn-primary" ng-click="Imagenes(profesional)" style="width: 100%; margin-bottom: 7px;">
-                            Imágenes
+                            Galeria de Imágenes
                           </button>  
                         </div>
                       </div>                    
                     </div>
                     <div class="col-md-6">
-                      <div id="map{{profesional.id}}" style=" position: relative;float: left; width: 100%;height: 280px;margin-bottom: 5px;">                      
+                      <div ng-hide="profesional.open">
+                        <div id="map{{profesional.id}}" style=" position: relative;float: left; width: 100%;height: 280px;margin-bottom: 5px;">                      
+                        </div>
+                      </div>
+                      <div ng-show="profesional.open">
+                        <h4>Productos</h4>
+                        <table class="table table-bordered">
+                          <th>Producto</th>
+                          <th>Marca</th>
+                          <th>Modelo</th>
+                          <th>Imágenes</th>
+                          <tr ng-repeat="producto in profesional.productos">
+                            <td>{{producto.producto}}</td>
+                            <td>{{producto.marca}}</td>
+                            <td>{{producto.modelo}}</td>
+                            <td><button class="btn btn-primary" ng-click="openImagenes(producto.imagenes)">Imágenes</button></td>
+                          </tr>
+                        </table>
+                        <h4>Servicios</h4>
+                        <table class="table table-bordered">
+                          <th>id</th>
+                          <th>Descripción</th>
+                          
+                          <tr ng-repeat="servicio in profesional.servicios">
+                            <td>{{servicio.id}}</td>
+                            <td>{{servicio.descripcion}}</td>
+                            
+                          </tr>
+                        </table>
                       </div>
                     </div>
                   </div>
@@ -317,6 +349,7 @@
   </div>
 </div>
 
+<!-- Modal Solicitud -->
 <div class="container">
   <div class="modal fade" id="modalSolicitud">
     <div class="modal-dialog">  
@@ -408,3 +441,8 @@
     </div>
   </div>
 </div>
+
+
+<!-- Modal Servicios -->
+
+

@@ -107,6 +107,7 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
     var promiseGet = profesionalService.postJSON(json);
     promiseGet.then(function (pl) {
         $scope.Profesionales = pl.data.profesionales;
+
     },
     function (errorPl) {
       console.log('Error Al Cargar Datos', errorPl);
@@ -124,6 +125,7 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
           $scope.json.longitud = position.coords.longitude;
       })
     };   
+    console.log(JSON.stringify($scope.json));
     var promiseGet = profesionalService.postJSON($scope.json);
     promiseGet.then(function (pl) {
         $scope.Profesionales = pl.data.profesionales;
@@ -202,7 +204,10 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
   $scope.Imagenes = function  (profesional) {
     $('#modalFotos').modal("show")
   }
-
+  $scope.openImagenes = function  (imagenes) {
+    $scope.Profesional.imagenesProductos = imagenes;
+    $('#modalFotos').modal("show");
+  }
   $scope.Detalles = function (profesional) {
     
     $scope.Profesional = profesional
