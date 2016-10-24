@@ -168,7 +168,7 @@
                             <td>{{producto.producto}}</td>
                             <td>{{producto.marca}}</td>
                             <td>{{producto.modelo}}</td>
-                            <td><button class="btn btn-primary" ng-click="openImagenes(producto.imagenes)">Imágenes</button></td>
+                            <td><button class="btn btn-primary" ng-click="openImagenes(producto.imagenes,producto.descripcion)">Imágenes</button></td>
                           </tr>
                         </table>
                         <h4>Servicios</h4>
@@ -178,8 +178,7 @@
                           
                           <tr ng-repeat="servicio in profesional.servicios">
                             <td>{{servicio.id}}</td>
-                            <td>{{servicio.descripcion}}</td>
-                            
+                            <td>{{servicio.descripcion}}</td>                            
                           </tr>
                         </table>
                       </div>
@@ -207,37 +206,47 @@
 <!-- Modal Fotos -->
 <div class="container">
   <div id="modalFotos" class="modal fade" role="dialog">
-      <div class="modal-dialog">      
+      <div class="modal-dialog modal-lg">      
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Imágenes del Producto</h4>
+            <h4 class="modal-title">Información del Producto</h4>
           </div>
           <div class="modal-body">
-            <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-              <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="$index" ng-class="{'active': $index == 0}" ng-repeat="sub in Profesional.imagenesProductos"></li>         
-              </ol>
-              <div class="carousel-inner" role="listbox">
-                <div class="item " ng-class="{'active': $index == 0}" ng-repeat="imagen in Profesional.imagenesProductos">
-                  <center>
-                    <img src="{{imagen.imagen}}" alt="{{imagen.imagen}}" style="width: 400px;height: 400px;">
-                  </center>
-                  
+            <div class="row">
+              <div class="col-md-6 col-xs-12">
+                <h3>Imágenes</h3>
+                <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+                  <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="$index" ng-class="{'active': $index == 0}" ng-repeat="sub in Profesional.imagenesProductos"></li>         
+                  </ol>
+                  <div class="carousel-inner" role="listbox">
+                    <div class="item " ng-class="{'active': $index == 0}" ng-repeat="imagen in Profesional.imagenesProductos">
+                      <center>
+                        <img src="{{imagen.imagen}}" alt="{{imagen.imagen}}" style="width: 400px;height: 400px;">
+                      </center>
+                      
+                    </div>
+                  </div>
+                  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" target="_self">
+                    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" target="_self">
+                    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                  </a>
                 </div>
               </div>
-              <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev" target="_self">
-                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-              </a>
-              <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next" target="_self">
-                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-              </a>
+              <div class="col-md-6 col-xs-12">
+                <h3>Descripción</h3>
+                <p class="text-justify">{{Descripcion}}</p>
+              </div>
             </div>
+                        
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
     </div>

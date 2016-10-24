@@ -204,8 +204,9 @@ app.controller('ProfesionalCtrl', function ($scope,profesionalService,clienteSer
   $scope.Imagenes = function  (profesional) {
     $('#modalFotos').modal("show")
   }
-  $scope.openImagenes = function  (imagenes) {
+  $scope.openImagenes = function  (imagenes,descripcion) {
     $scope.Profesional.imagenesProductos = imagenes;
+    $scope.Descripcion = descripcion;
     $('#modalFotos').modal("show");
   }
   $scope.Detalles = function (profesional) {
