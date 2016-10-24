@@ -52,8 +52,10 @@ class Profesionales extends REST_Controller {
 		);
 		$guardar = $this->model_profesional->saveUsuario($datosUsuario);
 		if ($guardar) {
-			$message = "Datos Guardados Correctamente";
-			$this->response($message, REST_Controller::HTTP_CREATED);
+			$this->response([
+       			'status' => TRUE,
+        		'message' => 'Datos Guardados Correctamente'
+            ], REST_Controller::HTTP_CREATED);
 		}else{
 			$message = "Error";
 			$this->response($message, REST_Controller::HTTP_BAD_REQUEST);
