@@ -141,7 +141,8 @@
                         </table>
                       </div>
                       <div class="row">
-                        <a href="javascript:;" class="btn btn-link" ng-click="profesional.open = true" style="font-size: 16px;">Servicios o Productos</a>
+                        <a href="javascript:;" class="btn btn-link" ng-click="profesional.open = true" style="font-size: 16px;" ng-hide="profesional.open">Servicios o Productos</a>
+                        <a href="javascript:;" class="btn btn-link" ng-click="profesional.open = false" style="font-size: 16px;" ng-show="profesional.open">Ver Mapa</a>
                         <div class="col-md-8 col-md-offset-2">
                           <button class="btn btn-primary btn-custom btn-serch" ng-click="Solicitar(profesional)" style="width: 100%; margin-bottom: 7px;">
                             Contactar
@@ -152,12 +153,17 @@
                         </div>
                       </div>                    
                     </div>
+                    
                     <div class="col-md-6">
+
                       <div ng-hide="profesional.open">
                         <div id="map{{profesional.id}}" style=" position: relative;float: left; width: 100%;height: 280px;margin-bottom: 5px;">                      
                         </div>
                       </div>
                       <div ng-show="profesional.open">
+                        <div class="row">
+                          
+                        </div>
                         <h4>Productos</h4>
                         <table class="table table-bordered">
                           <th>Producto</th>
@@ -168,7 +174,7 @@
                             <td>{{producto.producto}}</td>
                             <td>{{producto.marca}}</td>
                             <td>{{producto.modelo}}</td>
-                            <td><button class="btn btn-primary" ng-click="openImagenes(producto.imagenes,producto.descripcion)">Imágenes</button></td>
+                            <td><button class="btn btn-primary" ng-click="openImagenes(producto.imagenes,producto.descripcion)">Ver imagenes</button></td>
                           </tr>
                         </table>
                         <h4>Servicios</h4>
