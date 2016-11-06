@@ -2,7 +2,7 @@
 <html lang="en" ng-app="empresasesion">
     <head>
         <meta charset="utf-8">
-        <title>Themes Lab - Creative Laborator</title>
+        <title>Brakapp - Empresas</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta content="" name="description" />
         <meta content="themes-lab" name="author" />
@@ -10,69 +10,125 @@
         <link href="../assets/global/css/style.css" rel="stylesheet">
         <link href="../assets/global/css/ui.css" rel="stylesheet">
         <link href="../assets/global/plugins/bootstrap-loading/lada.min.css" rel="stylesheet">
+
+        <style>
+            .der{
+                float: left;
+                width: 400px;
+
+            }
+
+            .izq{
+                float: left;
+                width: 400px;
+            }
+            .boxr
+            {
+                border: thin solid #f2f2ee;
+            }
+
+            .dpto:first-child, .munc:first-child  {
+                color: #b7b7b7;
+            }
+
+            .append-icon{
+                margin-bottom:10px;
+            }
+        </style>
     </head>
-    <body class="sidebar-light account2" data-page="login">
-        <!-- BEGIN LOGIN BOX -->
-        <div class="container" id="login-block">
-           
-            <div class="account-form">
-                <form class="form-signin" role="form" ng-controller="registrarCtrl">
-                    <h3><strong>Bienvenido</strong> A Brakapp</h3>
-                    <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Razon Social" required ng-model="Profesional.razonSocial">
-                        <i class="icon-pie-chart"></i>
-                    </div>
-                    <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Nit" required ng-model="Profesional.identificacion">
-                        <i class="icon-key"></i>
-                    </div>
-                    <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Correo" required ng-model="Profesional.correo">
-                        <i class="icon-envelope"></i>
-                    </div>
-                    <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Telefono" required ng-model="Profesional.telefono">
-                        <i class="fa fa-phone"></i>
-                    </div>
+    <body class="sidebar-light account2" data-page="login" style="background: #FFF;">
+    <!-- register form-->
+    <div >
+    <div style="width: 100%;text-align: center;margin-top:60px;margin-bottom: 10px;">
+        <img src="../img/logobrakapp.png" width="150px" alt="">
+        <br>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-md-push-3" style="border: thin solid #cbcbc7;">
+            <h4 style="text-align: center"><strong>Registrate como empresa</strong></h4>
 
-                      <div class="form-group">
-                      <label> Departamento</label>
-                          <select  class="form-control form-white" data-style="green" data-placeholder="Departamento ..." ng-model = "Profesional.idDepartamento" ng-change="buscarMunicipio()" >
-                            <option ng-repeat=" dep in Departamentos"  value="{{dep.id}}">{{dep.nombre}}</option>
-                           </select>
+            <div class="row">
+                <form action="">
+                    <div class="col-md-6">
+                        <div class="append-icon">
+                            <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Razon Social" required ng-model="Profesional.razonSocial">
+                            <i class="icon-pie-chart"></i>
                         </div>
- 
+                    </div>
+                    <div class="col-md-6">
+                        <div class="append-icon">
+                            <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Nit" required ng-model="Profesional.identificacion">
+                            <i class="icon-key"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="append-icon">
+                            <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Correo" required ng-model="Profesional.correo">
+                            <i class="icon-envelope"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="append-icon">
+                            <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Telefono" required ng-model="Profesional.telefono">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
                         <div class="form-group">
-                        <label> Municipio</label>
-                          <select  class="form-control form-white" data-style="green" data-placeholder="Municipio ..." ng-model = "Profesional.idMunicipio" >
-                            <option ng-repeat=" mup in Municipios"  value="{{mup.id}}">{{mup.nombre}}</option>
-                           </select>
-                           </div>
 
-                    <div class="append-icon">
-                        <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model="usuario">
-                        <i class="icon-user"></i>
-                    </div>
-
-                     <div class="append-icon m-b-20">
-                        <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model="password">
-                        <i class="icon-lock"></i>
-                    </div>
-
-                    <button style="background-color:#FB135C;" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" ng-click="save()">Registrarse</button>
-                    <button style="background-color:#FB135C;" class="btn btn btn-dark btn-rounded ladda-button" data-style="expand-left" >Cancelar</button>
-                    <div class="form-footer">
-                        <div class="clearfix">
-                            <p class="new-here"><a>BrackApp</a></p>
+                            <select  class="form-control form-white dpto" data-style="green" data-placeholder="Departamento ..." ng-model = "Profesional.idDepartamento" ng-change="buscarMunicipio()" >
+                                <option value="" disabled selected >Departamento</option>
+                                <option ng-repeat=" dep in Departamentos"  value="{{dep.id}}">{{dep.nombre}}</option>
+                            </select>
                         </div>
                     </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+
+                            <select  class="form-control form-white munc" data-style="green" data-placeholder="Municipio ..." ng-model = "Profesional.idMunicipio" >
+                                <option value="" disabled selected>Municipio</option>
+                                <option ng-repeat=" mup in Municipios"  value="{{mup.id}}">{{mup.nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="append-icon">
+                            <input type="text" name="name" id="name" class="form-control form-white username" placeholder="Username" required ng-model="usuario">
+                            <i class="icon-user"></i>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="append-icon m-b-20">
+                            <input type="password" name="password" class="form-control form-white password" placeholder="Password" required ng-model="password">
+                            <i class="icon-lock"></i>
+                        </div>
+                    </div>
+                        <div class="col-md-6 " >
+                            <button style="background-color:#FB135C;" class="btn btn-primary" data-style="expand-left" ng-click="save()">Registrarse</button>
+                            <button style="background-color:#FB135C;" class="btn btn-warning" data-style="expand-left" >Cancelar</button>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
                 </form>
             </div>
-        </div> 
+        </div>
 
+    </div>
+    <!-- end register form -->
+    </div>
 
-
-<script src="../assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
+    <script src="../assets/global/plugins/jquery/jquery-1.11.1.min.js"></script>
     <script src="../js/angular.js"></script>
     <script src="../js/angular-route.js"></script>
     <script src="../js/ui-bootstrap.js"></script>
