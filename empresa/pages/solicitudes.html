@@ -1,7 +1,11 @@
+
+
 <div class="">
     <div class="row">
         <div class="col-md-12">
-            <h2 class="tittle-page"><span>Solicitudes</span></h2>
+            <h2 style="border-bottom: thin solid #C6C6C6;padding-bottom: 4px; margin-bottom: 30px;">
+  Administrar Solicitudes
+</h2>
         </div>
     </div>
   <div class="row">
@@ -10,7 +14,7 @@
               <div class="ctnm">
                   <div class="append-icon">
 
-                      <input type="text" name="firstname" id="finder" class="form-control form-white input-sm col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
+                      <input type="text" name="firstname" id="finder" class="form-control form-white col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
                       <i class="icon-magnifier icnsearchs" ></i>
 
                   </div>
@@ -37,7 +41,7 @@
                 </div>
                 <div class="panel-content">
                   <div class="filter-left">
-                    <table  class="table table-bordered ">
+                    <table  class="table table-bordered table-hover">
                       <thead>
                         <tr style="color:white;">
                           <th>#</th>
@@ -64,7 +68,7 @@
                            </select>         
                            </td>
                           <td>
-                              <button   type="button"  href="javascript:;" ng-click="update(sol)" class="btn btn-sm btn-blue buttonsp"><i class="fa fa-check"> &nbsp Responder</i></button>
+                              <button   type="button"  href="javascript:;" ng-click="update(sol)" class="btn btn-sm btn-success "><i class="fa fa-check"> &nbsp Responder</i></button>
                           </td>
                           <td>
                               <button   type="button"  href="javascript:;" ng-click="delete(sol)"  class="btn btn-sm btn-blue buttonsp"><i class="fa fa-close"> &nbsp Eliminar</i></button>

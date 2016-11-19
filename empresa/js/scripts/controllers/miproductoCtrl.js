@@ -165,4 +165,7 @@ app.controller('miproductoCtrl',  function($scope,productoService,pluginsService
 
 	}
 
+
+	
+
 })

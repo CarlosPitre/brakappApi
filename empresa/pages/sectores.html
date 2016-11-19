@@ -1,15 +1,19 @@
+<h2 style="border-bottom: thin solid #C6C6C6;padding-bottom: 4px; margin-bottom: 30px;">
+  Administrar Sectores
+</h2>
 <div class="">
 <div class="row">
-    <div class="col-md-8">
+    <div class="col-md-11">
       <div class="append-icon">
-            <input type="text" name="firstname" id="finder" class="form-control form-white input-sm" placeholder="Search..." autofocus ng-model="filter">
+            <input type="text" name="firstname" id="finder" class="form-control form-white " placeholder="Buscar..." autofocus ng-model="filter">
             <i class="icon-magnifier"></i>
           </div>
     </div>
-    <div class="col-md-2" >
-      <button style="background:#95C92C;"  type="button" class="btn btn-white btn" ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
+    <div class="col-md-1" >
+      <button style="background:#95C92C;"  type="button" class="btn btn-primary pull-right ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
     </div>    
   </div>
+  <br>
 
 	 <div class="row">
             <div class="col-lg-12 portlets">
@@ -19,7 +23,7 @@
                 </div>
                 <div class="panel-content">
                   <div class="filter-left">
-                    <table class="table table-bordered  ">
+                    <table class="table table-bordered table-hover  ">
                       <thead>
                         <tr style="color:white;">
                           <th>#</th>
@@ -32,10 +36,20 @@
                         <tr ng-repeat="sector in Sectores | filter:filter ">
                         	<td>{{sector.id}}</td>
                         	<td>{{sector.descripcion}} </td>
-                        	<td>{{sector.estado}} </td>
+                        	<td><span ng-class="{'label label-danger': sector.estado === 'Inactivo' }" class="label label-success" >{{sector.estado}} </span>  </td>
                         	<td>
-                        		<a href="javascript:;" ng-click="modificar(sector)" data-toggle="modal" data-target="#modal-responsive">Modficiar</a>
-                        		<a href="javascript:;" ng-click="delete(sector.id)">Eliminar</a>
+
+      
+
+                        		<a href="javascript:;" class="btn btn-sm btn-blue" ng-click="modificar(sector)" data-toggle="modal" data-target="#modal-responsive">
+                              <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+ Modficiar</span>
+                              </a>
+                              <button type="button" href="javascript:;" ng-click="delete(sector.id)" class="btn btn-sm btn-danger "><i class="fa fa-close"> &nbsp; Eliminar</i></button>
+
+                             
+
+                        		
                         	</td>
                         </tr>
                       </tbody>

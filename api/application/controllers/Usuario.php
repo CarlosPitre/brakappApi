@@ -21,6 +21,7 @@ class Usuario extends REST_Controller {
 		$user = $this->post("user");
 		$pass = sha1($this->post("pass"));
 
+
 		$usuario = $this->model_usuario->getLogin($user,$pass);
 
 		if ($usuario) {

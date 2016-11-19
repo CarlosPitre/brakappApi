@@ -1,8 +1,8 @@
-var uri = "../api";
+var uri = "../api/index.php";
 var app;
 (function  () {
-	app = angular.module("brackapp", ['ngRoute','angucomplete']);
-	app.config(['$routeProvider', '$locationProvider',function AppConfig($routeProvider,$locationProvider) {
+	app = angular.module("brackapp", ['ngRoute','angucomplete','ngAnimate','hm.readmore']);
+	app.config(['$routeProvider', '$locationProvider',function AppConfig($routeProvider,$locationProvider ) {
 		$routeProvider
 			.when("/inicio",{
                     templateUrl: 'pages/inicio.html',

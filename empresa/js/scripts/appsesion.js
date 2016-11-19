@@ -1,4 +1,4 @@
-var uri = "../api";
+var uri = "../api/index.php";
 var app;
 (function  () {
 	app = angular.module("empresasesion", ['ngRoute']);
