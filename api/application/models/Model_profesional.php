@@ -96,6 +96,14 @@ class Model_profesional extends CI_Model {
 							->get();
 		return $query->result();
 	}
+    
+    public function pagos ($datos = array())
+    {
+        $this->db->insert('pagos', $datos);
+		$id = $this->db->insert_id();
+        $query = $this->db->select("*")->from('pagos')->where("id",$id)->get();
+        return $query->row();
+    }
 
 	public function getProfesionalesByServicio($idServicio,$idMunicipio)
 	{

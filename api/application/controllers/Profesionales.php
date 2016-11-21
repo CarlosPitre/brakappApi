@@ -317,26 +317,62 @@ class Profesionales extends REST_Controller {
 
 	public function pagos_post()
 	{
-		$valor = $this->post("valorPago");
-		$id = $this->post("id");
-		$queryValores = $this->db->select('*')->from('valores')->where('id','1')->get();
+        $queryValores = $this->db->select('*')->from('valores')->where('id','1')->get();
 		$valores = $queryValores->row();
-		$queryProfesional = $this->db->select('diasRestantes')->from('profesional')->where('id',$id)->get();
+        $id = $this->post("id");
+        $queryProfesional = $this->db->select('diasRestantes')->from('profesional')->where('id',$id)->get();
 		$profesional = $queryProfesional->row();
-		$valormes = $valores->valor;
-		$dias = $valores->dias;
-		$diasMes = ($valor/$valormes)*$dias;
-		$diasRestantes = $profesional->diasRestantes + $diasMes;
+        $tipoPago = $this->post("tipoPago");
+        $diasRestantes = 0;
+        switch ($tipoPago)
+        {
+            case 'Año':
+                $diasRestantes = $profesional->diasRestantes + $valores->diasAno;
+                $valor = $valores->valorAno;
+                $concepto = "Pago de Subcripción por un año";
+                break;
+            case 'Meses' :
+                $numeroMeses = $this->post("numeroMeses");
+                $diasRestantes = ($profesional->diasRestantes + $valores->diasMes) * $numeroMeses;
+                $valor = $valores->valorMes;
+                $concepto = "Pago de Subcripción por '$numeromeses' meses";
+                break;
+            case 'Quincena':
+                $diasRestantes = intval($profesional->diasRestantes) + intval($valores->diasQuincena);
+                $valor = $valores->valorQuincena;
+                $concepto = "Pago de Subcripción por 15 Dias";
+                break;
+            case 'Recarga' :
+                $valor = $this->post("valorPago");		
+                $valormes = $valores->valorMes;
+                $dias = $valores->diasMes;
+                $diasMes = ($valor/$valormes)*$dias;
+                $diasRestantes = $profesional->diasRestantes + $diasMes;
+                $concepto = "Pago de Subcripción por '$diasMes' dias";
+                break;
+        }
+        
+        $datosPagos = array(
+            "idProfesional" => $id,
+            "concepto" => $concepto,
+            "valor" => $valor
+        );
 		
 		$datosProfesional = array('diasRestantes' => $diasRestantes, 'estado' => 'Activo');
+        
 		$updateProfesional = $this->model_profesional->update($datosProfesional,$this->post("id"));
 		if ($updateProfesional) {
-
-			$message = "Datos Guardados Correctamente";
-			$this->response([
+            $pagos = $this->model_profesional->pagos($datosPagos);
+            if ($pagos)
+            {
+              $message = "Datos Guardados Correctamente";
+              $this->response([
 					'msg' => $message,
+                    'pagos' => $pagos,
 					'status' => 0
-				], REST_Controller::HTTP_CREATED);
+				], REST_Controller::HTTP_CREATED);  
+            }
+			
 		}else{
 			$message = "Error";
 			$this->response([

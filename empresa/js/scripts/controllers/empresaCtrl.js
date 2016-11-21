@@ -18,13 +18,28 @@ app.controller('empresaCtrl', function ($scope, empresaService) {
     $scope.Profesional = profesional;
     $("#modalPago").modal("show");
   }
+  
+  $scope.changeTipoPago = function () {
+      
+      switch($scope.Profesional.tipoPago) {
+          case "Meses":
+              $scope.openMeses = true;
+              $scope.openRecarga = false;              
+              break;
+          case "Recarga":
+              $scope.openMeses = false;
+              $scope.openRecarga = true;
+              break;
+          default:
+              $scope.openMeses = false;
+              $scope.openRecarga = false;
+              break;
+      }
+  }
 
   $scope.savePago = function  () {
-    var data = {
-      id : $scope.Profesional.id,
-      valorPago : $scope.Profesional.valorPago
-    };
-    var promiseGet = empresaService.postPago(data);
+      console.log(JSON.stringify($scope.Profesional));
+    var promiseGet = empresaService.postPago($scope.Profesional);
     promiseGet.then(function (pl) {
         loadProfesionales()
         alert(pl.data.msg);

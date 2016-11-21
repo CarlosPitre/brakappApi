@@ -120,7 +120,26 @@
                 </div>        
               </div>                
             </div>
-            <div class="col-md-6">              
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="field-1" class="control-label">Tipo de Pago</label> 
+                    <select class="form-control ctinput" data-style="green"  ng-model = "Profesional.tipoPago"  ng-change="changeTipoPago()" >
+                        <option value="Año" >Año</option>
+                        <option value="Meses">Meses</option>
+                        <option value="Quincena">Quincena</option>
+                        <option value="Recarga">Recarga</option>
+                    </select>
+                </div>               
+            </div>
+            <div class="col-md-6" ng-show="openMeses">
+                <div class="form-group">
+                    <div>
+                      <label for="field-1" class="control-label">Numero de Meses</label>
+                      <input type="text" class="form-control ctinput d" id="field-1" ng-model="Profesional.numeroMeses">
+                    </div>        
+                  </div>   
+            </div>
+            <div class="col-md-6" ng-show = "openRecarga">              
               <div class="form-group">
                 <div>
                   <label for="field-1" class="control-label">Valor a Pagar</label>
