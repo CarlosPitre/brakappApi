@@ -316,6 +316,9 @@ color: #333;
 
 .form-control
 {
-    background: #FFF;
+    background: #FFF !important;
 }
 
+.label{
+    padding-top:3px !important;
+}

@@ -32,7 +32,9 @@
 <div class="">
   <div class="row">
       <div class="col-md-12">
-          <h2 class="tittle-page"><span>Productos</span></h2>
+        <h2 style="border-bottom: thin solid #C6C6C6;padding-bottom: 4px; margin-bottom: 30px;">
+        Administrar productos
+      </h2>
       </div>
   </div>
   <div class="row">
@@ -40,9 +42,9 @@
       <div class="ctnm">
           <div class="append-icon">
 
-              <input type="text" name="firstname" id="finder" class="form-control form-white input-sm col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
+              <input type="text" name="firstname" id="finder" class="form-control form-white  col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
               <i class="icon-magnifier icnsearch" ></i>
-              <button  type="button" class="btn btn-sm btn-blue buttonsp btnnew"  style="padding: 7px !important;" ng-click="nuevo()"> Nuevo</button>
+              <button  type="button" class="btn btn-sm btn-blue buttonsp btnnew"  style="padding: 10px !important;padding-left: 7px !important;" ng-click="nuevo()"> Nuevo</button>
           </div>
       </div>
       <div class="ctnm">
@@ -105,7 +107,7 @@
                           <td>{{pro.estatus}}</td>
                           <td>{{pro.estado}} </td>
                           <td>
-                              <button   type="button"  href="javascript:;" ng-click="delete(pro)"  class="btn btn-sm btn-blue buttonsp"><i class="fa fa-close"> &nbsp Eliminar</i></button>
+                              <a   href="javascript:;" ng-click="delete(pro)"  class="label label-danger"><i class="fa fa-close"> &nbsp Eliminar</i></button>
                           </td>
                         </tr>
                       </tbody>
@@ -132,7 +134,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icons-office-52"></i></button>
-          <div > <h4 style="color:white;" class="modal-title">GESTIÓN DE PRODUCTOS</h4> </div>
+          <div > <h4 style="color:#333;" class="modal-title">GESTIÓN DE PRODUCTOS</h4> </div>
         </div>
         <div class="modal-body">
 
@@ -164,8 +166,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
-                    <button  type="button" class="btn btn-primary btn-embossed bnt-square buttonsp"  ng-show="openButton" data-dismiss="modal"><i class="fa fa-close" ></i> Cerrar</button>
+                    
+                    <button  type="button" class="btn btn-danger btn-embossed bnt-square buttonsp pull-right"  ng-show="openButton" data-dismiss="modal"><i class="fa fa-close" ></i> Cerrar</button>
+                    <button  type="button" class="btn btn-primary  bnt-square pull-right " ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
                 </div>
             </div>
             <div>

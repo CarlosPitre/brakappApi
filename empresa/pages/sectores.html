@@ -3,15 +3,23 @@
 </h2>
 <div class="">
 <div class="row">
-    <div class="col-md-11">
-      <div class="append-icon">
-            <input type="text" name="firstname" id="finder" class="form-control form-white " placeholder="Buscar..." autofocus ng-model="filter">
-            <i class="icon-magnifier"></i>
+
+<div class="col-xs-12">
+      <div class="ctnm">
+          <div class="append-icon">
+
+              <input type="text" name="firstname" id="finder" class="form-control form-white  col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
+              <i class="icon-magnifier icnsearch" ></i>
+              <button  type="button" class="btn btn-sm btn-blue buttonsp btnnew"  style="padding: 10px !important;padding-left: 7px !important;" ng-click="nuevo()"> Nuevo</button>
           </div>
+      </div>
+      <div class="ctnm">
+
+      </div>
+
+  
     </div>
-    <div class="col-md-1" >
-      <button style="background:#95C92C;"  type="button" class="btn btn-primary pull-right ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
-    </div>    
+    
   </div>
   <br>
 
@@ -39,13 +47,14 @@
                         	<td><span ng-class="{'label label-danger': sector.estado === 'Inactivo' }" class="label label-success" >{{sector.estado}} </span>  </td>
                         	<td>
 
-      
+                            
 
-                        		<a href="javascript:;" class="btn btn-sm btn-blue" ng-click="modificar(sector)" data-toggle="modal" data-target="#modal-responsive">
+                        		<a href="javascript:;" class="label label-primary" ng-click="modificar(sector)" data-toggle="modal" data-target="#modal-responsive">
                               <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
  Modficiar</span>
                               </a>
-                              <button type="button" href="javascript:;" ng-click="delete(sector.id)" class="btn btn-sm btn-danger "><i class="fa fa-close"> &nbsp; Eliminar</i></button>
+                              <label for=""></label>
+                              <a href="javascript:;" type="button" href="javascript:;" ng-click="delete(sector.id)" class="label label-danger "><i class="fa fa-close"> &nbsp; Eliminar</i></a>
 
                              
 
@@ -73,7 +82,7 @@
 		        <div class="col-md-12">
 		        	
 		        	<div class="form-group">
-		    			<div class="t-center">
+		    			<div class="">
 		            		<label for="field-1" class="control-label">Descripción</label>
 		            		<input type="text" class="form-control form-white" id="field-1" placeholder="Ej: Sistemas,Plomeria,Electricidad..." ng-model="Sector.descripcion">
 		          		</div>     		
@@ -82,8 +91,8 @@
 		       </div>
 		    </div>
 		    <div class="modal-footer text-center">
-		      <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
-		      <button type="button" class="btn btn-primary btn-embossed bnt-square" ng-click="update()" ng-hide="openButton"><i class="fa fa-check"></i> Modificar</button>
+		      <button type="button" class="btn btn-primary pull-right" ng-click="save()" ng-show="openButton"><i class="fa fa-check"></i> Guardar</button>
+		      <button type="button" class="btn btn-primary pull-right" ng-click="update()" ng-hide="openButton"><i class="fa fa-check"></i> Modificar</button>
 		    </div>
 		  </div>
 		</div>

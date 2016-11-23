@@ -3,16 +3,27 @@
 </h2>
 <div class="">
 <div class="row">
-    <div class="col-md-11">
-      <div class="append-icon">
-            <input type="text" name="firstname" id="finder" class="form-control form-white " placeholder="Buscar..." autofocus ng-model="filter">
-            <i class="icon-magnifier"></i>
+
+  <div class="col-xs-12">
+      <div class="ctnm">
+          <div class="append-icon">
+
+              <input type="text" name="firstname" id="finder" class="form-control form-white  col-md-8" placeholder="Buscar..." autofocus ng-model="filter">
+              <i class="icon-magnifier icnsearch" ></i>
+              <button  type="button" class="btn btn-sm btn-blue buttonsp btnnew"  style="padding: 10px !important;padding-left: 7px !important;" ng-click="nuevo()"> Nueva</button>
           </div>
+      </div>
+      <div class="ctnm">
+
+      </div>
+
+
     </div>
-    <div class="col-md-1" >
-      <button style="background:#95C92C;"  type="button" class="btn btn-primary  pull-right" ng-click="nuevo()"><i style="color:white;"  class="fa fa-plus"></i></button>
-    </div>    
+
+
+     
   </div>
+  <br>
 
    <div class="row">
             <div class="col-lg-12 portlets">
@@ -35,7 +46,8 @@
                           <td>{{respta.id}}</td>
                           <td>{{respta.nombre}} </td>
                           <td>
-                          <button type="button" href="javascript:;" ng-click="delete(respta)" class="btn btn-sm btn-danger "><i class="fa fa-close"> &nbsp; Eliminar</i></button>
+
+                          <a href="javascript:;" ng-click="delete(respta)" class="label label-danger "><i class="fa fa-close"> &nbsp; Eliminar</i></a>
                             
                           </td>
                         </tr>
